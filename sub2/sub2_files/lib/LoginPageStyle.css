@@ -2,14 +2,13 @@
 body{
     margin:0;
     padding: 0;
-    background : url(black_background.jpg);
+    background : url(photos/black_background.jpg);
     background-size: calc(100%);
     font-family: sans-serif;
 }
     .loginbox{
         width: 320px;
         height: 420px;
-        /* background:#000; */
         background: transparent;
         color:#fff;
         top:50%;
@@ -71,7 +70,7 @@ body{
     .loginbox input[type="submit"]:hover{
         cursor: pointer;
         background: #add8e6;
-        color:#000;
+        color:rgb(82, 80, 200);
         animation-name: submitChangeColor;
         animation-duration: 10s;
     }

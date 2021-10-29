@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title > Login Page </title>
+    <link rel="stylesheet" type="text/css" href="lib\LoginPageStyle.css">
+  </head>
+    <script src ="lib\LoginPageScript.js"></script>
+  <body>
+      <div class="loginbox">
+        <img src="lib/photos/avatar.jpg" class="avatar">
+        <h1>Login</h1>
+        <form>
+          <p >Username</p>
+          <input id="email" type="text" name="" placeholder="Enter Username" >
+          <p >Password</p>
+          <input type="password" name="" placeholder="Enter Password" id="pass">
+          <input type="submit" value="Login" onclick="func1(document.getElementById('email').value,document.getElementById('pass').value);" >
+          <br>
+          <a href="LostPassPage.html" >Lost your password?</a>
+          <br>
+          <a href="SignUpPage.html" >Sign up</a>
+        </form>
+
+      </div>
+    </body>
+  </head>
+</html>
