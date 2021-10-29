@@ -2,14 +2,15 @@
 body{
     margin:0;
     padding: 0;
-    background : url(login_page_wallpaper.jpg);
-    background-size: cover;
+    background : url(black_background.jpg);
+    background-size: calc(100%);
     font-family: sans-serif;
 }
     .loginbox{
         width: 320px;
         height: 420px;
-        background:#000;
+        /* background:#000; */
+        background: transparent;
         color:#fff;
         top:50%;
         left: 50%;
@@ -64,13 +65,15 @@ body{
         border:none;
         outline: none;
         height: 40px;
-        background-color: #0000ff;
+        background-blend-mode:overlay color-burn ;
         border-radius: 20px;
     }
     .loginbox input[type="submit"]:hover{
         cursor: pointer;
         background: #add8e6;
         color:#000;
+        animation-name: submitChangeColor;
+        animation-duration: 10s;
     }
 
     .loginbox a{
@@ -91,7 +94,14 @@ body{
       
     }
 
-
+   
+    @keyframes submitChangeColor {
+        0%   {background-color: red;}
+        25%  {background-color: yellow;}
+        50%  {background-color: blue;}
+        100% {background-color: green;}
+        }
+      
 
 
 
