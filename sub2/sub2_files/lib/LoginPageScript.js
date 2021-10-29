@@ -1,5 +1,5 @@
 // Add your code here
-function func1(e,p)
+function signInValidation(e,p)
           {
               var validationRules = "Minimum 6 Characters\nMust Include an Uppercase Character\nMust Include an Lowercase Character\n";
               validationRules += "Must Include a Number\nMust Include a Special Character (!, @, #, etc.).";

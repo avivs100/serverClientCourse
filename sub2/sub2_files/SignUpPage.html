@@ -2,11 +2,29 @@
 
 <html>
   <head>
+    <title> SignUpPage</title>
     <link rel="stylesheet" type="text/css" href="lib\SignUpPageStyle.css" />
-    <script src ="lib\LoginPageScript.js"></script>
-    <script src ="lib\SignUpScript.js"></script>
+    <script src ="lib\SignUpPageScript.js"></script>
   </head>
+
   <body>
+    <div class="SignUpBox">
+      <img src="lib/photos/avatar.jpg" class="avatar">
+      <h1>Sign Up</h1>
+      <form>
+        <p >Username</p>
+        <input  type="text" name="" placeholder="Enter Username" id="email">
+        <p >Password</p>
+        <input type="password" name="" placeholder="Enter Password" id="pass">
+        <p >Confirmation</p>
+        <input type="password" name="" placeholder="Repeat Password" id="ConfirmPass">
+        <input type="submit" value="SignUp" onclick="createAccountAndValidate(document.getElementById('email').value,document.getElementById('pass').value,document.getElementById('ConfirmPass').value);" >
+        <br>
+        <a href="LoginPage.html" >Already a member? sign in</a>
+        <br>
+      </form>
+
+    </div>
 
 
   </body>
