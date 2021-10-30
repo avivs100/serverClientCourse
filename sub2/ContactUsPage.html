@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" type="text/css" href="sub2_files\lib\ContactUsPageStyle.css" />
+    <script src ="sub2_files\lib\ContactUsPageScript.js"></script>
+  </head>
+
+  <body>
+    <div class="ContactUsBox">
+      <h1>Contact Us</h1>
+      <form>
+        <p >Name</p>
+        <input  type="text" name="" placeholder="Name *" id="name">
+        <p >Email</p>
+        <input  type="text" name="" placeholder="Email *" id="email">
+        <br>
+        <select id="combo">
+            <option value="" disabled selected>Select your option *</option>
+            <option value="hurr">Durr</option>
+        </select>
+        <br>
+        <p >Subject</p>
+        <input  type="text" name="" placeholder="Subject *" id="subject">
+        <br>
+        <input type="submit" value="Submit" onclick="check(document.getElementById('name').value,document.getElementById('email').value,document.getElementById('combo').value,document.getElementById('subject').value);" >
+        <br>
+      </form>
+    </div>
+
+
+  </body>
+</html>
