@@ -3,6 +3,7 @@
 <html>
   <head>
     <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="sub2_files\lib\ContactUsPageStyle.css" />
     <script src ="sub2_files\lib\ContactUsPageScript.js"></script>
   </head>
@@ -12,7 +13,7 @@
       <h1>Contact Us</h1>
       <form>
         <p >Name</p>
-        <input  type="text" name="" placeholder="Name *" id="name">
+        <input  type="text" name="" placeholder="Name *" id="name" >
         <p >Email</p>
         <input  type="text" name="" placeholder="Email *" id="email">
         <br>
@@ -22,11 +23,19 @@
         </select>
         <br>
         <p >Subject</p>
-        <input  type="text" name="" placeholder="Subject *" id="subject">
+        <textarea  name="" placeholder="Your message *" id="subject" rows=5 ></textarea>
         <br>
         <input type="submit" value="Submit" onclick="check(document.getElementById('name').value,document.getElementById('email').value,document.getElementById('combo').value,document.getElementById('subject').value);" >
         <br>
       </form>
+    </div>
+
+    <div class="contact-details">
+      <h1>Contact details</h1>
+      <div><i class="fas fa-map-marker-alt"></i>Israel, Haifa, Oren32</div><br>
+      <div><i class="fas fa-envelope"></i>AvivGay@gmail.com</div><br>
+      <div><i class="fas fa-phone"></i>05050505050</div><br>
+      <div><i class="fas fa-clock"></i>24\7</div><br>
     </div>
 
 
