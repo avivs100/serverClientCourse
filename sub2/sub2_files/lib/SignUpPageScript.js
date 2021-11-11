@@ -21,10 +21,12 @@ function createAccountAndValidate(e,p,rp)
               );
             if(! re.test(String(e).toLowerCase()))
             {
-                const newLocal = 'show';
-                var mymodal = $('#ErrorModal');
-                mymodal.find('.modal-body').text('Please enter a valid email\n');
-                mymodal.modal(newLocal);            
+                
+                const local = 'show';
+                var mmodal = $('#ErrorModal');
+                mmodal.find('.modal-body').text('Please enter a valid email\n');
+                mmodal.modal(local);
+                console.log("8\n");             
                 return;
             }
             else if (String(p).length<6)
@@ -33,6 +35,7 @@ function createAccountAndValidate(e,p,rp)
                 var mymodal = $('#ErrorModal');
                 mymodal.find('.modal-body').text("Pass should contain at least 6 letters\n\n"+validationRules);
                 mymodal.modal(newLocal);
+                console.log("7\n"); 
                 return;
             }
             else if (!lowerCaseCheck.test(p))
@@ -41,6 +44,7 @@ function createAccountAndValidate(e,p,rp)
                 var mymodal = $('#ErrorModal');
                 mymodal.find('.modal-body').text("Pass not contain lowercase\n\n"+validationRules);
                 mymodal.modal(newLocal);
+                console.log("6\n"); 
                 return;
             }  
             else if (!UpperCaseCheck.test(p))
@@ -49,6 +53,7 @@ function createAccountAndValidate(e,p,rp)
                 var mymodal = $('#ErrorModal');
                 mymodal.find('.modal-body').text("Pass not contain uppercase\n\n"+validationRules);
                 mymodal.modal(newLocal);
+                console.log("5\n"); 
                 return;
             } 
             else if (!specialCaseCheck.test(p))
@@ -60,7 +65,8 @@ function createAccountAndValidate(e,p,rp)
                 const newLocal = 'show';
                 var mymodal = $('#ErrorModal');
                 mymodal.find('.modal-body').text("Pass not contain special char\n\n"+validationRules);
-                mymodal.modal(newLocal);                
+                mymodal.modal(newLocal);
+                console.log("4\n");                 
                 return;
             } 
             else if (!numberCaseCheck.test(p))
@@ -68,7 +74,8 @@ function createAccountAndValidate(e,p,rp)
                 const newLocal = 'show';
                 var mymodal = $('#ErrorModal');
                 mymodal.find('.modal-body').text("Pass not contain number\n\n"+validationRules);
-                mymodal.modal(newLocal);            
+                mymodal.modal(newLocal);
+                console.log("3\n");             
                 return;
             }   
             else if (!(p==rp))
@@ -76,12 +83,16 @@ function createAccountAndValidate(e,p,rp)
                 const newLocal = 'show';
                 var mymodal = $('#ErrorModal');
                 mymodal.find('.modal-body').text("Confirmation faild, sorry try again !\n");
-                mymodal.modal(newLocal);            
+                mymodal.modal(newLocal); 
+                console.log("2\n");            
                 return;
+            }
+            else {
+                const newLocal = 'show';
+                var mymodal = $('#ErrorModal');
+                mymodal.find('.modal-body').text("Email: "+e+"\n"+"Password: "+p+"\n");
+                mymodal.modal(newLocal);
+                console.log("1\n"); 
             } 
-            const newLocal = 'show';
-            var mymodal = $('#ErrorModal');
-            mymodal.find('.modal-body').text("Email: "+e+"\n"+"Password: "+p+"\n");
-            mymodal.modal(newLocal);     
             console.log(""+e+"\n"+p);
           }

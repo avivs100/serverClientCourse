@@ -108,13 +108,17 @@ a {
     color: rgb(180, 214, 27);
     background-color: #1A237E
 }
+
 .row input[type="submit"]{
     cursor: pointer;
     background: #57c4e9;
     width: 30%;
     font-weight: bold;
-    animation-name: submitChangeColor;
+    
     animation-duration: 10s;
+}
+.row input[type="submit"]:hover{
+    animation-name: submitChangeColor;
 }
 
 @keyframes submitChangeColor {
@@ -142,26 +146,4 @@ a {
         border-top: 1px solid #eeeeee5b !important;
         margin: 0px 15px
     }
-}
-.inner-addon { 
-    position: relative; 
-}
-
-/* style icon */
-.inner-addon .glyphicon {
-  position: absolute;
-  padding: 10px;
-  pointer-events: none;
-}
-
-/* align icon */
-.left-addon .glyphicon  { left:  0px;}
-.form-control {
-    padding-right: 30px;
-}
-
-.form-control + .glyphicon {
-    position: absolute;
-    left: 0;
-    padding: 8px 27px;
 }

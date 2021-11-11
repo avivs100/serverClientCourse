@@ -3,7 +3,6 @@
 <html>
 
   <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
     <title > Sign up Page </title>
     <link rel="stylesheet" type="text/css" href="lib\SignUpPageStyle.css">
     <meta charset="utf-8">
@@ -17,8 +16,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
-    <!-- icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
   </head>
   <body>
@@ -37,30 +34,19 @@
                                 <div class="line"></div> 
                                 <div class="line"></div>
                             </div>
-                        <div class="row px-3">
-                             <label class="mb-1">
+                        <div class="row px-4"> <label class="mb-1">
                                 <h6 class="mb-0 text-sm">Email Address</h6>
-                            </label>
-                             <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address" id="email">
-                        </div>
+                            </label> <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address" id="email"> </div>
 
-                        <div class="row px-3"> <label class="mb-1">
+                        <div class="row px-4"> <label class="mb-1">
                                 <h6 class="mb-0 text-sm">Password</h6>
-                            </label> 
-                            <input type="password " name="password" placeholder="Enter password" id="pass"> 
-                        </div>
-                        <br>                                              
-                        
-                        <div class="row px-3  "> 
-                            <label class="mb-1">
+                            </label> <input type="password " name="password" placeholder="Enter password" id="pass"> </div>
+                            <br>
+                        <div class="row px-4"> <label class="mb-1">
                                 <h6 class="mb-0 text-sm">Confirm Password</h6>
-                            </label>
-                            <input  type="password" name="password" placeholder="Enter password" id="ConfirmPass">                          
-                        </div> 
-
-                        
-                        
-                        <div class="row px-3 mb-4">                    
+                            </label> <input class="inner-addon left-addon"  type="password" name="password" placeholder="Enter password" id="ConfirmPass"> </div>
+                        <div class="row px-4 mb-4">
+                            <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input">  </div> 
                         </div>
                         <div class="row mb-3 px-3"> <input type="submit" value="Login" onclick="createAccountAndValidate(document.getElementById('email').value,document.getElementById('pass').value,document.getElementById('ConfirmPass').value);" > </div>
                         <div class="row mb-4 px-3"> <small class="font-weight-bold">have an account? <a href="NewLoginPage.html" class="text-danger ">Sign in</a></small> </div>
