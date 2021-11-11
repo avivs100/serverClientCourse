@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title > Login Page </title>
+    <link rel="stylesheet" type="text/css" href="lib\NewLoginPage.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src ="lib\LoginPageScript.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+  </head>
+  <body>
+    <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+        <div class="card card0 border-0">
+            <div class="row d-flex">
+                <div class="col-lg-6">
+                    <div class="card1 pb-5">
+                        <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="lib/photos/SignUpBackground.jpg" class="rounded-circle" alt="Cinque Terre" width="500" height="500"> </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card2 card border-0 px-4 py-5">
+                        <h1 style="font-size:28px; font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bolder; font-style: italic; align-self: center;">Login</h1>
+                            <div class="row px-3 mb-4">
+                                <div class="line"></div> 
+                                <div class="line"></div>
+                            </div>
+                        <div class="row px-3"> <label class="mb-1">
+                                <h6 class="mb-0 text-sm">Email Address</h6>
+                            </label> <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address" id="email"> </div>
+                        <div class="row px-3"> <label class="mb-1">
+                                <h6 class="mb-0 text-sm">Password</h6>
+                            </label> <input type="password" name="password" placeholder="Enter password" id="pass"> </div>
+                        <div class="row px-3 mb-4">
+                            <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input">  </div> <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>
+                        </div>
+                        <div class="row mb-3 px-3"> <input type="submit" value="Login" onclick="signInValidation(document.getElementById('email').value,document.getElementById('pass').value);" > </div>
+                        <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a href="NewSignUpPage.html" class="text-danger ">Sign Up</a></small> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-blue py-4">
+                <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Aviv & Sagi &copy; 2021. All rights reserved.</small>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="ErrorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="white-space: pre-line">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+  </body>
+

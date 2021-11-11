@@ -68,13 +68,7 @@ body{
         background-blend-mode:overlay color-burn ;
         border-radius: 20px;
     }
-    .loginbox input[type="submit"]:hover{
-        cursor: pointer;
-        background: #add8e6;
-        color:rgb(82, 80, 200);
-        animation-name: submitChangeColor;
-        animation-duration: 10s;
-    }
+    
 
     .loginbox a{
         text-decoration: none;
@@ -93,7 +87,13 @@ body{
         text-align: center;
       
     }
-
+    .loginbox input[type="submit"]:hover{
+        cursor: pointer;
+        background: #add8e6;
+        color:rgb(82, 80, 200);
+        animation-name: submitChangeColor;
+        animation-duration: 10s;
+    }
    
     @keyframes submitChangeColor {
         0%   {background-color: red;}

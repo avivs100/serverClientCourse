@@ -19,7 +19,7 @@
   </head>
     <script src ="lib\LoginPageScript.js"></script>
   <body>
-      <div class="loginbox">
+      <div class="container-fluid">
         <img src="lib/photos/avatar.jpg" class="avatar">
         <h1>Login</h1>
         <p >Username</p>
@@ -30,7 +30,6 @@
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
         </form>
-
         <form class="form-inline" role="form">
           <div class="form-group has-success has-feedback">
             <label class="control-label" for="inputSuccess4"></label>
@@ -38,16 +37,10 @@
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
         </form>
-
-
-
-
-
         <form>
          <!-- <p >Username</p> 
           <input id="email" type="text" name="" placeholder="Enter Username" > -->
           <p >Password</p>
-
           <input type="password" name="" placeholder="Enter Password" id="pass">
           <input type="submit" value="Login" onclick="signInValidation(document.getElementById('email').value,document.getElementById('pass').value);" >
           <br>
