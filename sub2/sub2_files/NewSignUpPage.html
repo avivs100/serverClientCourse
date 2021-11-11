@@ -3,6 +3,7 @@
 <html>
 
   <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
     <title > Sign up Page </title>
     <link rel="stylesheet" type="text/css" href="lib\SignUpPageStyle.css">
     <meta charset="utf-8">
@@ -48,22 +49,17 @@
                             </label> 
                             <input type="password " name="password" placeholder="Enter password" id="pass"> 
                         </div>
-                            <br>                                              
+                        <br>                                              
                         
-                        <div class="row px-3 col-xs-9 "> 
+                        <div class="row px-3  "> 
                             <label class="mb-1">
                                 <h6 class="mb-0 text-sm">Confirm Password</h6>
                             </label>
-                            <input class="form-control" type="password" name="password" placeholder="Enter password" id="ConfirmPass">
-                            <span class="glyphicon glyphicon-lock"></span>                             
+                            <input  type="password" name="password" placeholder="Enter password" id="ConfirmPass">                          
                         </div> 
 
-                        <div class="col-xs-9">
-                            <input class="form-control" type="search" />
-                            <span class="glyphicon glyphicon-search"></span>
-                          </div>
                         
-
+                        
                         <div class="row px-3 mb-4">                    
                         </div>
                         <div class="row mb-3 px-3"> <input type="submit" value="Login" onclick="createAccountAndValidate(document.getElementById('email').value,document.getElementById('pass').value,document.getElementById('ConfirmPass').value);" > </div>
