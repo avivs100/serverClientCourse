@@ -22,17 +22,17 @@ function createAccountAndValidate(e,p,rp)
             if(! re.test(String(e).toLowerCase()))
             {
                 
-                const local = 'show';
-                var mmodal = $('#ErrorModal');
-                mmodal.find('.modal-body').text('Please enter a valid email\n');
-                mmodal.modal(local);
+                const newLocal = 'show';
+                var mymodal = $('#ErrorModal2');
+                mymodal.find('.modal-body').text('Please enter a valid email\n');
+                mymodal.modal(newLocal);
                 console.log("8\n");             
                 return;
             }
             else if (String(p).length<6)
             {
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal');
+                var mymodal = $('#ErrorModal2');
                 mymodal.find('.modal-body').text("Pass should contain at least 6 letters\n\n"+validationRules);
                 mymodal.modal(newLocal);
                 console.log("7\n"); 
@@ -41,7 +41,7 @@ function createAccountAndValidate(e,p,rp)
             else if (!lowerCaseCheck.test(p))
             {
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal');
+                var mymodal = $('#ErrorModal2');
                 mymodal.find('.modal-body').text("Pass not contain lowercase\n\n"+validationRules);
                 mymodal.modal(newLocal);
                 console.log("6\n"); 
@@ -50,7 +50,7 @@ function createAccountAndValidate(e,p,rp)
             else if (!UpperCaseCheck.test(p))
             {
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal');
+                var mymodal = $('#ErrorModal2');
                 mymodal.find('.modal-body').text("Pass not contain uppercase\n\n"+validationRules);
                 mymodal.modal(newLocal);
                 console.log("5\n"); 
@@ -63,7 +63,7 @@ function createAccountAndValidate(e,p,rp)
                 if(p.includes("]"))
                     return;
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal');
+                var mymodal = $('#ErrorModal2');
                 mymodal.find('.modal-body').text("Pass not contain special char\n\n"+validationRules);
                 mymodal.modal(newLocal);
                 console.log("4\n");                 
@@ -72,7 +72,7 @@ function createAccountAndValidate(e,p,rp)
             else if (!numberCaseCheck.test(p))
             {
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal');
+                var mymodal = $('#ErrorModal2');
                 mymodal.find('.modal-body').text("Pass not contain number\n\n"+validationRules);
                 mymodal.modal(newLocal);
                 console.log("3\n");             
@@ -81,7 +81,7 @@ function createAccountAndValidate(e,p,rp)
             else if (!(p==rp))
             {
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal');
+                var mymodal = $('#ErrorModal2');
                 mymodal.find('.modal-body').text("Confirmation faild, sorry try again !\n");
                 mymodal.modal(newLocal); 
                 console.log("2\n");            
@@ -89,7 +89,7 @@ function createAccountAndValidate(e,p,rp)
             }
             else {
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal');
+                var mymodal = $('#ErrorModal2');
                 mymodal.find('.modal-body').text("Email: "+e+"\n"+"Password: "+p+"\n");
                 mymodal.modal(newLocal);
                 console.log("1\n"); 
