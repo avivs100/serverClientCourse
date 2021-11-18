@@ -1,7 +1,7 @@
 body{
     margin:0;
     padding: 0;
-    background : url(photos/black_background.jpg) no-repeat;
+    background : url(../lib/photos/black_background.jpg) no-repeat;
     background-size: calc(100%);
     font-family: sans-serif;
 }

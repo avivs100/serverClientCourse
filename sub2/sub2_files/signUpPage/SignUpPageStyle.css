@@ -1,8 +1,10 @@
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+
 body {
     color: #000;
     overflow-x: hidden;
     height: 100%;
-    background : url(photos/black_background.jpg);
+    background : url(../lib/photos/black_background.jpg);
     background-size: calc(100%);
 }
 
@@ -106,13 +108,17 @@ a {
     color: rgb(180, 214, 27);
     background-color: #1A237E
 }
+
 .row input[type="submit"]{
     cursor: pointer;
     background: #57c4e9;
     width: 30%;
     font-weight: bold;
-    animation-name: submitChangeColor;
+    
     animation-duration: 10s;
+}
+.row input[type="submit"]:hover{
+    animation-name: submitChangeColor;
 }
 
 @keyframes submitChangeColor {
