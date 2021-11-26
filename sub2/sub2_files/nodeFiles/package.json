@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemailer": "^6.7.1",
+    "upper-case": "^2.0.2"
+  },
+  "name": "avivsaginpminit",
+  "version": "1.0.0",
+  "description": "client server project",
+  "main": "test1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "SERVERCLIENTCOURSE"
+  },
+  "author": "Aviv Shichman",
+  "license": "ISC"
+}

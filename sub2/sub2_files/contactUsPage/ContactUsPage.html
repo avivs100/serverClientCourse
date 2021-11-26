@@ -62,27 +62,20 @@
                                       <div class="mt-4 inputs"> 
                                         <input type="text" class="form-control" id="name" placeholder="Name"> 
                                         <input type="text" class="form-control"id="email" placeholder="Email"> 
-                                        <div class="dropdown">
-                                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                                            Subject
-                                          </button>
-                                          <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                          <div>
+                                            <select class="body_text" name="critical">
+                                                <option value="Select"> Subject </option>
+                                                <option value="LOW"> Low </option>
+                                                <option value="NORMAL"> Normal </option>
+                                                <option value="HIGH"> High </option>
+                                                <option value="CRITICAL"> Critical </option>      
+                                            </select>
                                           </div>
-                                        </div>
+                                        
                                         <textarea class="form-control" id="message" placeholder="Type your message"></textarea> 
                                       </div>
                                       
-
-                                      <select class="body_text" name="critical">
-                                        <option value="Select"> Select </option>
-                                        <option value="LOW"> Low </option>
-                                        <option value="NORMAL"> Normal </option>
-                                        <option value="HIGH"> High </option>
-                                        <option value="CRITICAL"> Critical </option>      
-                                     </select>
+                                      
 
 
                                       <div class="button mt-4 text-left" onclick="signInValidation(document.getElementById('name').value,document.getElementById('email').value,document.getElementById('dropdownMenuButton').value,document.getElementById('message').value);"> <button class="btn btn-dark">Send</button> </div>
