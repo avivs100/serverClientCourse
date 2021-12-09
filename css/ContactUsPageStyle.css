@@ -1,7 +1,7 @@
 .wrapper {
     height: 100vh;
     background: #000;
-    background: url("../lib/photos/black_background.jpg");
+    background: url("../photos/black_background.jpg");
     background-size: cover;
     width: 100%
 }

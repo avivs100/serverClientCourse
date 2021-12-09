@@ -4,21 +4,21 @@ var port = process.env.PORT || 8080;
 var path = require('path');
 
 app.use(express.static(__dirname));
-
+console.log(__dirname);
 // app.get('/', function (req, res) {
 //     res.sendFile(path.join(__dirname + '../../HomePage/HomePage.html'));
 // })
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '../../../loginPage/LoginPage.html'));
+    res.sendFile(path.join(__dirname + '/LoginPage.html'));
 })
 
 app.get('/signUpPage', function (req, res) {
-    res.sendFile(path.join(__dirname + '../../../signUpPage/SignUpPage.html'));
+    res.sendFile(path.join(__dirname + '/SignUpPage.html'));
 })
 
 app.get('/contactUsPage', function (req, res) {
-    res.sendFile(path.join(__dirname + '../../../contactUsPage/ContactUsPage.html'));
+    res.sendFile(path.join(__dirname + '/ContactUsPage.html'));
 })
 
 app.listen(port);

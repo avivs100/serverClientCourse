@@ -4,7 +4,7 @@ body {
     color: #000;
     overflow-x: hidden;
     height: 100%;
-    background : url(../lib/photos/black_background.jpg);
+    background : url(../photos/black_background.jpg);
     background-size: calc(100%);
 }
 

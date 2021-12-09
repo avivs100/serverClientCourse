@@ -3,11 +3,10 @@
 <html>
 
   <head>
-    <title > Sign up Page </title>
-    <link rel="stylesheet" type="text/css" href="SignUpPageStyle.css">
+    <title > Login Page </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src ="SignUpPageScript.js"></script>
+    <script src ="js/LoginPageScript.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -17,6 +16,8 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet"  href="css/LoginPageStyle.css"> 
+    
   </head>
   <body>
     <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
@@ -24,12 +25,12 @@
             <div class="row d-flex">
                 <div class="col-lg-6">
                     <div class="card1 pb-5">
-                        <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="../lib/photos/SignUpBackground.jpg" class="rounded-circle" alt="Cinque Terre" width="500" height="500"> </div>
+                        <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="photos/SignUpBackground.jpg" class="rounded-circle" alt="Cinque Terre" width="500" height="500"> </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="card2 card border-0 px-4 py-5">
-                        <h1 style="font-size:28px; font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bolder; font-style: italic; align-self: center;">Sign up</h1>
+                        <h1 style="font-size:28px; font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bolder; font-style: italic; align-self: center;">Login</h1>
                             <div class="row px-3 mb-4">
                                 <div class="line"></div> 
                                 <div class="line"></div>
@@ -37,19 +38,14 @@
                         <div class="row px-3"> <label class="mb-1">
                                 <h6 class="mb-0 text-sm">Email Address</h6>
                             </label> <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address" id="email"> </div>
-
                         <div class="row px-3"> <label class="mb-1">
                                 <h6 class="mb-0 text-sm">Password</h6>
                             </label> <input type="password" name="password" placeholder="Enter password" id="pass"> </div>
-                            <br>
-                        <div class="row px-3"> <label class="mb-1">
-                                <h6 class="mb-0 text-sm">Confirm Password</h6>
-                            </label> <input class="inner-addon left-addon"  type="password" name="password" placeholder="Enter password" id="ConfirmPass"> </div>
                         <div class="row px-3 mb-4">
-                            <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input">  </div> 
+                            <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input">  </div> <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>
                         </div>
-                        <div class="row mb-3 px-3"> <input type="submit" value="Login" onclick="createAccountAndValidate(document.getElementById('email').value,document.getElementById('pass').value,document.getElementById('ConfirmPass').value);" > </div>
-                        <div class="row mb-3 px-3" style="font-size: medium;"> <small class="font-weight-bold" >have an account? <a href="../loginPage/LoginPage.html" class="text-danger ">Sign in</a></small> </div>
+                        <div class="row mb-3 px-3"> <input type="submit" value="Login" onclick="signInValidation(document.getElementById('email').value,document.getElementById('pass').value);" > </div>
+                        <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a href="SignUpPage.html" class="text-danger ">Sign Up</a></small> </div>
                     </div>
                 </div>
             </div>
@@ -60,11 +56,11 @@
             </div>
         </div>
     </div>
-    <div class="modal" id="ErrorModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="white-space: pre-line">
+    <div class="modal fade" id="ErrorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="white-space: pre-line">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel2">Error</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Error</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -80,3 +76,4 @@
       </div>
       
   </body>
+
