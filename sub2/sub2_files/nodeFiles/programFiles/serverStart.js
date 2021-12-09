@@ -14,11 +14,11 @@ app.get('/', function (req, res) {
 })
 
 app.get('/signUpPage', function (req, res) {
-    res.sendFile(path.join(__dirname + '../../signUpPage/SignUpPage.html'));
+    res.sendFile(path.join(__dirname + '../../../signUpPage/SignUpPage.html'));
 })
 
-app.get('/sign-up', function (req, res) {
-    res.sendFile(path.join(__dirname + '../../contactUsPage/ContactUsPage.html'));
+app.get('/contactUsPage', function (req, res) {
+    res.sendFile(path.join(__dirname + '../../../contactUsPage/ContactUsPage.html'));
 })
 
 app.listen(port);
