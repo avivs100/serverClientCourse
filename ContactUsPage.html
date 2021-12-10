@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Contact Us</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="	https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/ContactUsPageStyle.css" />
+    <script src ="js/ContactUsPageScript.js"></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="overlay">
+          <div class="row d-flex justify-content-center align-items-center">
+              <div class="col-md-9">
+                  <div class="contact-us text-center">
+                      <h2 style="color: aliceblue;">Contact Us</h2>
+                      <br>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="mt-5 text-center px-3">
+                                  <div class="d-flex flex-row align-items-center contact-support"> <span class="icons"><i class="fa fa-user-md"></i></span>
+                                      <div class="address text-left"> 
+                                          <p>Need 24/7 support </p>
+                                          <button class = "support-button" >CONTACT SUPPORT</button>
+                                          <br>
+                                      </div>
+                                  </div>
+                                  <div class="d-flex flex-row align-items-center"> <span class="icons"><i class="fa fa-map-marker"></i></span>
+                                      <div class="address text-left"> <span>Address</span>
+                                          <p>shivtai israel 47,kiryat-bialik,israel </p>
+                                      </div>
+                                  </div>
+                                  <div class="d-flex flex-row align-items-center mt-3"> <span class="icons"><i class="fa fa-phone"></i></span>
+                                      <div class="address text-left"> <span>Phone</span>
+                                          <p>0505555555</p>
+                                      </div>
+                                  </div>
+                                  <div class="d-flex flex-row align-items-center mt-3"> <span class="icons"><i class="fa fa-envelope-o"></i></span>
+                                      <div class="address text-left"> <span>Contact info</span>
+                                          <p>AvivSagiProj@gmail.com</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="text-center px-1">
+                                  <div class="forms p-4 py-5 bg-white">
+                                      <h5>Send Message</h5>
+                                      <div class="mt-4 inputs"> 
+                                        <input type="text" class="form-control" id="name" placeholder="Name"> 
+                                        <input type="text" class="form-control"id="email" placeholder="Email"> 
+                                          <div>
+                                            <select class="body_text" name="critical">
+                                                <option value="Select"> Subject </option>
+                                                <option value="LOW"> Low </option>
+                                                <option value="NORMAL"> Normal </option>
+                                                <option value="HIGH"> High </option>
+                                                <option value="CRITICAL"> Critical </option>      
+                                            </select>
+                                          </div>
+                                        
+                                        <textarea class="form-control" id="message" placeholder="Type your message"></textarea> 
+                                      </div>
+                                      
+                                      
+
+
+                                      <div class="button mt-4 text-left" onclick="signInValidation(document.getElementById('name').value,document.getElementById('email').value,document.getElementById('dropdownMenuButton').value,document.getElementById('message').value);"> <button class="btn btn-dark">Send</button> </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  </body>
+</html>
