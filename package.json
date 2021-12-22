@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "express": "^4.17.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
     "nodemailer": "^6.7.2",
     "upper-case": "^2.0.2"
   },
@@ -9,12 +11,16 @@
   "description": "client server project",
   "main": "test1.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
     "url": "SERVERCLIENTCOURSE"
   },
   "author": "Aviv Shichman",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
