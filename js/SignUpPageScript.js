@@ -1,4 +1,21 @@
 // Add your code here
+/* 
+TODO:
+BUG - createAccountAndValidate() , accepcts passwords without special characters (The rest is ok) 
+    We need to fix it here and in every other password validation in the project
+*/
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+
+
+
+    
+    
+
+
+
 function createAccountAndValidate(e,p,rp)
           {
               var validationRules = "Minimum 6 Characters\nMust Include an Uppercase Character\nMust Include an Lowercase Character\n";
@@ -87,12 +104,17 @@ function createAccountAndValidate(e,p,rp)
                 console.log("2\n");            
                 return;
             }
-            else {
+            else { //here: The username & password are valid
                 const newLocal = 'show';
                 var mymodal = $('#ErrorModal2');
-                mymodal.find('.modal-body').text("Email: "+e+"\n"+"Password: "+p+"\n");
+                mymodal.find('.modal-body').text("You signed up seccessfully\nEmail: "+e+"\n"+"Password: "+p+"\n");
                 mymodal.modal(newLocal);
                 console.log("1\n"); 
+                //send data to the server
+                // POST http://localhost:8080/api/users
+                app.post('/api/users', function(res,e,p) { //what is the URL that we need? <<<<<<<<<<<<<<<
+                    res.send(e + ' ' + p);
+                    });
             } 
             console.log(""+e+"\n"+p);
           }
