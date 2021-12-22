@@ -27,6 +27,8 @@ app.get('/contactUsPage', function (req, res) {
 app.listen(port);
 console.log('Server started! At http://localhost:' + port);
 
+
+
 lib.sendMailToUser(nodemailer,"avivshichman@gmail.com","david","david david");
 
 
