@@ -28,6 +28,7 @@
                   <div class="contact-us text-center">
                       <h2 style="color: aliceblue;">Contact Us</h2>
                       <br>
+                      <br>
                       <div class="row">
                           <div class="col-md-6">
                               <div class="mt-5 text-center px-3">
@@ -61,8 +62,9 @@
                                       <h5>Send Message</h5>
                                       <div class="mt-4 inputs"> 
                                         <input type="text" class="form-control" id="name" placeholder="Name"> 
-                                        <input type="text" class="form-control"id="email" placeholder="Email"> 
-                                          <div>
+                                        <input type="text" class="form-control"id="email" placeholder="Email">
+                                          <!--<div> -->
+                                            <div class="text-left px-1" style="padding-top: 3%">
                                             <select class="body_text" name="critical">
                                                 <option value="Select"> Subject </option>
                                                 <option value="LOW"> Low </option>
@@ -70,15 +72,17 @@
                                                 <option value="HIGH"> High </option>
                                                 <option value="CRITICAL"> Critical </option>      
                                             </select>
-                                          </div>
-                                        
-                                        <textarea class="form-control" id="message" placeholder="Type your message"></textarea> 
+                                            </div>
+                                         <!-- </div> -->
+                                        <textarea class="form-control" id="message" placeholder="Type your message (25 characters or more)"></textarea> 
                                       </div>
                                       
                                       
 
 
-                                      <div class="button mt-4 text-left" onclick="signInValidation(document.getElementById('name').value,document.getElementById('email').value,document.getElementById('dropdownMenuButton').value,document.getElementById('message').value);"> <button class="btn btn-dark">Send</button> </div>
+                                      <!--<div class="button mt-4 text-left" onclick="signInValidation(document.getElementById('name').value,document.getElementById('email').value,document.getElementById('dropdownMenuButton').value,document.getElementById('message').value);"> <button class="btn btn-dark">Send</button> </div>-->
+                                      <div class="button mt-4 text-left" onclick="contact_us()"> <button class="btn btn-dark">Send</button> </div>
+
                                   </div>
                               </div>
                           </div>
