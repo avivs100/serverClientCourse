@@ -4,7 +4,7 @@ function emailValidation(e){
 
 
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(! re.test(String(e).toLowerCase()))
+    if(!(re.test(String(e).toLowerCase())))
     {
         const newLocal = 'show';
         var mymodal = $('#ErrorModal22');
@@ -15,7 +15,27 @@ function emailValidation(e){
     }
     else
     {
-        console.log("valid email from forgot pass")
+        
+        console.log("valid email from forgot pass");
+        $.post( url = '/ForgotPassword', data = { Email: e } )
+        .done(function (data) {
+            if (data == "Error") {
+              //פה צריך לעשות דברים אם האימייל לא קיים בדאטה בייס
+            }
+            else {
+              //פה זה אומר שהאימייל קיים בדאטה בייס
+            }
+          });
+
+        // $.ajax({
+        //   type: "POST",
+        //   url: "/ForgotPassword",
+        //   data: $('#email1').value
+        // });
     }
-}
+
+}   
+
+
+
 
