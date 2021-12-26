@@ -26,3 +26,4 @@ function sendMailToUser(nodemailer,sentTo,subjectOfMail,textToSend){
 }
 
 module.exports = { sendMailToUser };
+
