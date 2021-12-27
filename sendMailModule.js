@@ -2,10 +2,17 @@
 
 function sendMailToUser(nodemailer,sentTo,subjectOfMail,textToSend){
     var transporter = nodemailer.createTransport({
-        service: 'gmail',
+      //   service: 'gmail',
+      //   auth: {
+      //     user: 'avivsagiproj@gmail.com',
+      //     pass: '123456AS'
+      //   }
+      // });
+
+        service: 'hotmail',
         auth: {
-          user: 'avivsagiproj@gmail.com',
-          pass: '123456AS'
+          user: process.env.AUTH_EMAIL,
+          pass: process.env.AUTH_PASS,
         }
       });
       
