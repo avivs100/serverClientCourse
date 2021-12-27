@@ -39,7 +39,7 @@ app.get('/ForgotPassword', function (req, res) {
 app.post('/ForgotPassword',jsonParser, async function (req, resul) {
     var emailToSend = JSON.stringify(req.body.Email);
     lib.sendMailToUser(nodemailer,emailToSend,"Forgot password email","simulation of forgot password");
-    resul.send("AB");
+    resul.send("EMET ani gever");
 });
 
 
