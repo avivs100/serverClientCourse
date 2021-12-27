@@ -19,9 +19,12 @@ function emailValidation(e){
       {
           $.post(  '/ForgotPassword', { Email: e } )
           .done(function (data) {
-              if (data=="AB")
+              if (data="EMET ani gever")
               {
-                console.log("SADKNLASDMAS");
+                const newLocal = 'show';
+                var mymodal = $('#ErrorModal03');
+                mymodal.find('.modal-body').text('Email sent successfuly, please reset your password\n');
+                mymodal.modal(newLocal);
               }
               // if (data == "Error") {
               //   //פה צריך לעשות דברים אם האימייל לא קיים בדאטה בייס
