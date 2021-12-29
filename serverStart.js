@@ -33,9 +33,6 @@ app.get('/ForgotPassword', function (req, res) {
     res.sendFile(path.join(__dirname + '/ForgotPassword.html'));
 })
 
-
-
-
 app.post('/ForgotPassword',jsonParser, async function (req, resul) {
     var emailToSend = JSON.stringify(req.body.Email);
     lib.sendMailToUser(nodemailer,emailToSend,"Forgot password email","simulation of forgot password");
@@ -56,3 +53,20 @@ app.listen(port);
 console.log('Server started! At http://localhost:' + port);
 
 //lib.sendMailToUser(nodemailer,"avivshichman@gmail.com","david","david david");
+
+
+app.get('/Login', function (req, res) {
+    res.sendFile(path.join(__dirname + '/ContactUsPage.html'));
+})
+
+app.post('/Login' , function (req, res){
+var user=req.body.email;
+var pass=req.body.psw;
+console.log("From client post request: user name="+user+" and password is:"+pass);
+res.sendFile(path.join(__dirname + '/ContactUsPage.html'));
+});
+
+app.get('/Test', function (req, res) {
+    console.log("stam");
+})
+

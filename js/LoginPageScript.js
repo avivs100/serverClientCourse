@@ -3,7 +3,10 @@
 var validpsw=false;
 
 function ValidateEmail(inputText)
-{
+{   
+    var answerFromRecaptcha = recaptchaFunc();
+
+    if (answerFromRecaptcha == true){
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if(inputText.value.match(mailformat) && validpsw)
     {
@@ -30,7 +33,17 @@ function ValidateEmail(inputText)
         return false;
     }
 }
+    else{
+        alert("recapcha empty!");
+    }
 
+}
+
+function validPswCheck(){
+    var val;
+    val=validpsw;
+    return val;
+}
 
 function LogInValidation(e,p)
           {
@@ -123,3 +136,5 @@ function LogInValidation(e,p)
     const recaptcha = document.querySelector('.g-recaptcha');
     recaptcha.setAttribute("data-theme", "dark");
   });
+
+  
