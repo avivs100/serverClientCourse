@@ -1,5 +1,15 @@
+var express = require('express');
+var bodyParser = require('body-parser');
+var app = express();
+var port = 8080;
+
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+
+
 // Add your code here
-function createAccountAndValidate(e,p,rp)
+function createAccountAndValidate(e,p,rp,firstName,lastName)
           {
               var validationRules = "Minimum 6 Characters\nMust Include an Uppercase Character\nMust Include an Lowercase Character\n";
               validationRules += "Must Include a Number\nMust Include a Special Character (!, @, #, etc.).";
@@ -90,9 +100,25 @@ function createAccountAndValidate(e,p,rp)
             else {
                 const newLocal = 'show';
                 var mymodal = $('#ErrorModal2');
-                mymodal.find('.modal-body').text("Email: "+e+"\n"+"Password: "+p+"\n");
+                mymodal.find('.modal-body').text("$$$$$$$$$$$$$$Email: "+e+"\n"+"Password: "+p+"\n");
                 mymodal.modal(newLocal);
                 console.log("1\n"); 
+                
+                /** send to server */
+                app.post("http://localhost:8080/SignUpPage", function(req, res) {
+                    var email = e;
+                    var password = p;
+                    var firstName = firstName;
+                    var lastName = lastName
+                    res.send(email + ' ' + password + ' ' + firstName + ' ' + lastName);
+                    });
+
+                    
+                
+
+                
+
+
             } 
             console.log(""+e+"\n"+p);
           }

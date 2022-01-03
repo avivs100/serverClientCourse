@@ -34,6 +34,13 @@
                                 <div class="line"></div> 
                                 <div class="line"></div>
                             </div>
+
+                            <div class="row px-3"> <label class="mb-1">
+                              <h6 class="mb-0 text-sm">First name</h6>
+                          </label> <input class="mb-4" type="text" name="firstName" placeholder="Enter your name" id="firstName"> </div>
+                          <div class="row px-3"> <label class="mb-1">
+                            <h6 class="mb-0 text-sm">Last name</h6>
+                        </label> <input class="mb-4" type="text" name="lastName" placeholder="Enter your last name" id="lastName"> </div>    
                         <div class="row px-3"> <label class="mb-1">
                                 <h6 class="mb-0 text-sm">Email Address</h6>
                             </label> <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address" id="email"> </div>
@@ -48,19 +55,16 @@
                         <div class="row px-3 mb-4">
                             <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input">  </div> 
                         </div>
-                        <div class="row mb-3 px-3"> <input type="submit" value="Login" onclick="createAccountAndValidate(document.getElementById('email').value,document.getElementById('pass').value,document.getElementById('ConfirmPass').value);" > </div>
+                        <div class="row mb-3 px-3"> <input type="submit" id="submit" method = "post" value="Login"  > </div>
                         <div class="row mb-3 px-3" style="font-size: medium;"> <small class="font-weight-bold" >have an account? <a href="LoginPage.html" class="text-danger ">Sign in</a></small> </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-blue py-4">
-                <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Aviv & Sagi &copy; 2021. All rights reserved.</small>
-    
-                </div>
+  
             </div>
         </div>
     </div>
-    <div class="modal" id="ErrorModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="white-space: pre-line">
+    <div class="modal" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="white-space: pre-line">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -80,3 +84,41 @@
       </div>
       
   </body>
+
+
+ 
+  <script>
+    $(document).ready(function(){
+      var email,password,firstName,lastName;
+      $("#submit").click(function(){
+        email=$("#email").val();
+        password=$("#pass").val();
+        firstName=$("#firstName").val();
+        lastName=$("#lastName").val();
+
+        /* validate */
+          //TODO
+
+        /* if valid, send to server and check if already exist */
+        $.post("http://localhost:8080/SignUpPage",{email: email,password: password,firstName: firstName , lastName: lastName}, function(data){
+          // console.log(data);
+          if(data == "EXIST"){
+            alert("EXIST");
+          }
+          else if(data == "SUCCESS"){
+            const newLocal = 'show';
+            var mymodal = $('#Modal2');
+            mymodal.find('.modal-body').text('Please enter a valid email\n');
+            mymodal.modal(newLocal);
+            // alert("Singup seccessfully \n" + 
+            //                                 "User: " + email);
+            //location.replace("http://localhost:8080/ForgotPassword");
+          }
+          else if(data == "SQL ERROR"){
+            alert("SQL ERROR!!!");
+          }
+        });
+        return false;
+      });
+    });
+</script>

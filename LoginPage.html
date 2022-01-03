@@ -110,11 +110,17 @@
           $("#submit").click(function(){
             user=$("#email").val();
             pass=$("#psw").val();
-            if(validPswCheck()==true && recaptchaFunc()==true){
-              $(location).attr('href','ContactUsPage.html');}
+            //if(validPswCheck()==true && recaptchaFunc()==true){
+            //  $(location).attr('href','ContactUsPage.html');}
             $.post("http://localhost:8080/Login",{email: user,psw: pass}, function(data){
-              if(data === 'yes') {
-                  alert("login success");
+              if(data === "NO SUCH EMAIL") {
+                  alert("NO SUCH EMAIL");
+                }
+                else if(data === "SUCCESS"){
+                  alert("SUCCESS");
+                }
+                else if(data === "PASSWORD NOT MATCH"){
+                  alert("PASSWORD NOT MATCH");
                 }
             });
             return false;
