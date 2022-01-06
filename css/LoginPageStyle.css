@@ -1,19 +1,13 @@
 
+
 body {
     color: #000;
     overflow-x: hidden;
     height: 100%;
     background : url(../photos/black_background.jpg);
     background-size: calc(100%);
-}
-
-.card0 {
-    box-shadow: 0px 4px 8px 0px #757575;
-    border-radius: 0px
-}
-
-.card2 {
-    margin: 0px 40px
+    font-style:normal;
+    font-family: Georgia, 'David', Times, serif
 }
 
 .logo {
@@ -28,65 +22,36 @@ body {
     height: 280px
 }
 
-.border-line {
-    border-right: 1px solid #EEEEEE
-}
-
-
-
-.line {
-    height: 1px;
-    width: 45%;
-    background-color: #E0E0E0;
-    margin-top: 10px
-}
-
-.or {
-    width: 10%;
-    font-weight: bold
-}
-
-.text-sm {
-    font-size: 14px !important
-}
-
-::placeholder {
-    color: #BDBDBD;
-    opacity: 1;
-    font-weight: 300
-}
-
-:-ms-input-placeholder {
-    color: #BDBDBD;
-    font-weight: 300
-}
-
-::-ms-input-placeholder {
-    color: #BDBDBD;
-    font-weight: 300
-}
-
 input,
 textarea {
     padding: 10px 12px 10px 12px;
-    border: 1px solid lightgrey;
+    border: none;
+    border-bottom: 2px solid #eee;
     border-radius: 2px;
-    margin-bottom: 5px;
+    margin-bottom: 13px;
     margin-top: 2px;
     width: 100%;
     box-sizing: border-box;
     color: #2C3E50;
     font-size: 14px;
-    letter-spacing: 1px
+    letter-spacing: 1px;
+    resize: none;
 }
 
-input:focus,
+
+input:focus {
+    margin-bottom: 13px;
+    border: none;
+    border-bottom: 2px solid #7B1FA2;
+    box-shadow: none
+}
+
 textarea:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: 1px solid #304FFE;
-    outline-width: 0
+    margin-bottom: 13px;
+    border: none;
+    border-bottom: 2px solid #7B1FA2;
+    box-shadow: none;
+    resize: none
 }
 
 button:focus {
@@ -98,18 +63,13 @@ button:focus {
 
 a {
     color: inherit;
-    cursor: pointer
+    cursor: pointer;
 }
 
 
-
-.bg-blue {
-    color: rgb(180, 214, 27);
-    background-color: #1A237E
-}
 .row input[type="submit"]{
     cursor: pointer;
-    background: #57c4e9;
+    background: #325561;
     width: 30%;
     font-weight: bold;
     animation-name: submitChangeColor;
@@ -123,22 +83,58 @@ a {
     100% {background-color: rgb(142, 28, 207);}
     }
 
-@media screen and (max-width: 991px) {
-    .logo {
-        margin-left: 0px
-    }
 
-    .image {
-        width: 300px;
-        height: 220px
-    }
+#message {
+    text-align: left;
+    display:none;
+    color: #000;
+    position: relative;
+    padding: 2px;
+    margin-top: 80px;
+    width: 400px;
+    height: 300px;
+  }
 
-    .border-line {
-        border-right: none
-    }
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+  }
+  
+  .valid:before {
+    position: relative;
+    left: -10px;
+    content: "✔";
+  }
+  
+  /* Add a red text color and an "x" when the requirements are wrong */
+  .invalid {
+    color: red;
+  }
+  
+  .invalid:before {
+    position: relative;
+    left: -10px;
+    content: "✖";
+  }
+  .address {
+    margin-top: 14px !important;
+    margin-left: 10px
+}
 
-    .card2 {
-        border-top: 1px solid #eeeeee5b !important;
-        margin: 0px 15px
-    }
+.address span {
+    color: #7B1FA2
+}
+
+.icons {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+  .icons i {
+    font-size: 20px
 }

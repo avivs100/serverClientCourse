@@ -9,6 +9,15 @@ var jsonParser = bp.json();
 app.use(bp.urlencoded({ extended: true }));
 app.use(jsonParser);
 
+/** DATA BASE  */
+var connection = require('./DBconfig.js');
+
+const encryption = require("./encryption");
+
+
+
+
+
 //import { sendMailToUser } from "./sendMailModule.js";
 
 app.use(express.static(__dirname));
@@ -23,6 +32,9 @@ app.get('/', function (req, res) {
 
 app.get('/signUpPage', function (req, res) {
     res.sendFile(path.join(__dirname + '/SignUpPage.html'));
+    if(req == 'contactUsPage'){
+        res.sendFile(path.join(__dirname + '/ContactUsPage.html'));
+    }
 })
 
 app.get('/contactUsPage', function (req, res) {
@@ -32,9 +44,6 @@ app.get('/contactUsPage', function (req, res) {
 app.get('/ForgotPassword', function (req, res) {
     res.sendFile(path.join(__dirname + '/ForgotPassword.html'));
 })
-
-
-
 
 app.post('/ForgotPassword',jsonParser, async function (req, resul) {
     var emailToSend = JSON.stringify(req.body.Email);
@@ -56,3 +65,85 @@ app.listen(port);
 console.log('Server started! At http://localhost:' + port);
 
 //lib.sendMailToUser(nodemailer,"avivshichman@gmail.com","david","david david");
+
+
+app.get('/Login', function (req, res) {
+    res.sendFile(path.join(__dirname + '/ContactUsPage.html'));
+})
+
+app.post('/Login' , function (req, res){
+var email = encryption.encrypt(req.body.email);
+var password = encryption.encrypt(req.body.psw);
+
+connection.query("SELECT email,encryptedPassword FROM mydb.users WHERE email = ?", email, function (err, result, fields) {  
+    try{
+        if (err) throw err;
+        if(result == ""){
+            res.send("NO SUCH EMAIL");
+            console.log("here 3");
+        }
+        else if(password === result[0].encryptedPassword){ 
+            res.send("SUCCESS");
+            console.log("here 2");
+        }
+        else{
+            res.send("PASSWORD NOT MATCH");
+            console.log("here 1");
+        }
+    }
+    catch(err){
+        console.error(err);
+        res.send("SQL ERROR");
+    }
+    }); 
+});
+
+app.post('/SignUpPage' , function (req, res){
+    var email = encryption.encrypt(req.body.email);
+    var password = req.body.password;
+    var firstName = req.body.firstName;
+    var lastName = req.body.lastName;
+    
+    
+    //console.log("From client post request:" + email + password + firstName + lastName);
+    /** check if exist in DB */
+    connection.query("SELECT email FROM mydb.users WHERE email = ?", email, function (err, result, fields) {
+        
+        try{
+            if (err) throw err;
+            if(result == ""){
+                /** Enter user to the DB */
+                password = encryption.encrypt(password);
+                const VALUES = "('" + email + "','"  + password  + "','"  + firstName +  "','" +  lastName + "');";
+                query_text = 'INSERT INTO mydb.users (email, encryptedPassword, firstName, lastName) VALUES' + VALUES;
+                connection.query(query_text,  function (err, result, fields){
+                    try{
+                        if (err) throw err;
+                        console.log("insert");
+                        console.log(result);
+                        res.send("SUCCESS");
+                    }
+                    catch{
+                        console.error(err);
+                        res.send("SQL ERROR");
+                    }
+                });
+            }
+            else{ 
+            res.send("EXIST");
+            }
+        }
+        catch(err){
+            console.error(err);
+            res.send("SQL ERROR");
+        }
+        });  
+});
+
+
+
+
+  
+
+
+
