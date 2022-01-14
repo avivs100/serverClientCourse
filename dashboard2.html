@@ -60,8 +60,47 @@
                     <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
                     Dashboard
                   </a>
-
-                  <li class="nav-item nav-link caret" > 
+                  <ul data-role="treeview">
+                    <li class="expanded" data-caption="Checkboxes">davids
+                        <ul>
+                            <li><input type="checkbox" data-role="checkbox" data-caption="Play animation"></li>
+                            <li><input type="checkbox" data-role="checkbox" data-caption="Play sound" checked></li>
+                            <li><input type="checkbox" data-role="checkbox" data-caption="Disabled" disabled></li>
+                            <li><input type="checkbox" data-role="checkbox" data-caption="Disabled checked" checked disabled></li>
+                        </ul>
+                    </li>
+                    <li class="expanded" data-caption="Radios">
+                        <ul>
+                            <li><input type="radio" name="r1" data-role="radio" data-caption="Play animation"></li>
+                            <li><input type="radio" name="r1" data-role="radio" data-caption="Play sound" checked></li>
+                            <li><input type="radio" data-role="radio" data-caption="Disabled" disabled></li>
+                            <li><input type="radio" data-role="radio" data-caption="Disabled checked" checked disabled></li>
+                        </ul>
+                    </li>
+                    <li class="expanded" data-caption="Switches">
+                        <ul>
+                            <li><input type="checkbox" data-role="switch" data-caption="Play animation"></li>
+                            <li><input type="checkbox" data-role="switch" data-caption="Play sound" checked></li>
+                            <li><input type="checkbox" data-role="switch" data-caption="Disabled" disabled></li>
+                            <li><input type="checkbox" data-role="switch" data-caption="Disabled checked" checked disabled></li>
+                        </ul>
+                    </li>
+                    <li class="expanded" data-caption="Inputs">
+                        <ul>
+                            <li style="width: 220px"><input type="text" data-role="input"></li>
+                            <li style="width: 220px">
+                                <select data-role="select">
+                                    <option value="1">Value 1</option>
+                                    <option value="2">Value 2</option>
+                                    <option value="3">Value 3</option>
+                                </select>
+                            </li>
+                            <li style="width: 220px"><textarea data-role="textarea"></textarea></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul data-role="treeview">
+                  <li class="nav-item nav-link caret expanded" > 
                     <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
                     Pages
                     <ul class="nested">
@@ -69,17 +108,12 @@
                       <li>Coffee</li>
                     </ul>
                   </li>
+                </ul>
                 
                 <li class="nav-item">
                   <a class="nav-link" href="#">
                     <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
                     Orders
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <svg class="bi bi-chevron-right" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/></svg>
-                    Tables
                   </a>
                 </li>
                 <li class="nav-item">
