@@ -45,11 +45,7 @@ app.get('/ForgotPassword', function (req, res) {
     res.sendFile(path.join(__dirname + '/ForgotPassword.html'));
 })
 
-app.post('/ForgotPassword',jsonParser, async function (req, resul) {
-    var emailToSend = JSON.stringify(req.body.Email);
-    lib.sendMailToUser(nodemailer,emailToSend,"Forgot password email","simulation of forgot password");
-    resul.send("EMET ani gever");
-});
+
 
 
 app.get('/dashboard', function (req, res) {
@@ -140,10 +136,19 @@ app.post('/SignUpPage' , function (req, res){
         });  
 });
 
+app.post('/contactUsPage',jsonParser, async function (req, res) {
+    var email = req.body.email;
+    var select_in = req.body.my_selection;
+    var in_message = req.body.xMessage;
+    //console.log("Message from client: " + email + " with the following severity: " + select_in + " says: \n" + in_message);
+     var our_email = "avivsagiproj@gmail.com"
+     var emailToSend = JSON.stringify(our_email);
+     lib.sendMailToUser(nodemailer,"avivsagiproj@gmail.com" ,"Garage " + JSON.stringify(req.body.my_selection) + " Issue",JSON.stringify(req.body.in_message));
+     res.send("SUCCESS");
+});
 
-
-
-  
-
-
-
+app.post('/ForgotPassword',jsonParser, async function (req, resul) {
+    var emailToSend = JSON.stringify(req.body.Email);
+    lib.sendMailToUser(nodemailer,emailToSend,"Forgot password email","simulation of forgot password");
+    resul.send("EMET ani gever");
+});
