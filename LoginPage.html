@@ -54,8 +54,7 @@
                                
                               </div>
                           </div>
-                          <input type="checkbox" name="remember" id="remember" />
-                          <label for="remember">Remember me</label>
+
                         <div class="row">
                             <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input">  </div> <a href="ForgotPassword.html" class="ml-auto mb-0 text sm">Forgot Password?</a>
                         </div>
@@ -110,8 +109,8 @@
           $("#submit").click(function(){
             user=$("#email").val();
             pass=$("#psw").val();
-            //if(validPswCheck()==true && recaptchaFunc()==true){
-            //  $(location).attr('href','ContactUsPage.html');}
+            if(validPswCheck()==true && recaptchaFunc()==true){
+              $(location).attr('href','ContactUsPage.html');}
             $.post("http://localhost:8080/Login",{email: user,psw: pass}, function(data){
               if(data === "NO SUCH EMAIL") {
                   alert("NO SUCH EMAIL");
