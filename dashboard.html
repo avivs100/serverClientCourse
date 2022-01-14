@@ -64,13 +64,16 @@ $.post( '/dashboard' ).done(function (data1) {
                         {data: 'date'},
                         {data: 'workerEmail'},
                         {data: 'carNum'},
-                        {defaultContent: '<button onclick="deleteRow(123)">Delete</button> / <button onclick="deleteRow(123)">Edit</button>'}
+                        {defaultContent: '<button onclick="deleteRow(treatmentNum)">Delete</button> / <button onclick="deleteRow(treatmentNum)">Edit</button>'}
                     ]
                 } );
             });
 } );
 
 function deleteRow(treatmentNum) {
-    console.log("here");
+    
+    $.post( '/dashboard_delete' ,{treatmentNum: treatmentNum}).done(function () {
+            location.reload(); 
+    } );    
 }
 </script>

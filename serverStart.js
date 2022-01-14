@@ -48,17 +48,25 @@ app.get('/ForgotPassword', function (req, res) {
 
 
 
-app.get('/dashboard2', function (req, res) {
-    res.sendFile(path.join(__dirname + '/dashboard2.html'));
+app.get('/dashboard', function (req, res) {
+    res.sendFile(path.join(__dirname + '/dashboard.html'));
 })
 
 // var dataToSend = [["Moshe","Cohen","22","moshe@gmail.com"],["david","Cohen","26","david@gmail.com"],["Moshe","adas","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"]];
-app.post('/dashboard2',jsonParser, async function (req, resul) {
+app.post('/dashboard',jsonParser, async function (req, resul) {
     connection.query("SELECT * FROM mydb.treatments", function (err, result, fields) {
-        console.log(result[0]);
         resul.send(result);
     });
 });
+
+app.post('/dashboard_delete',jsonParser, async function (req, resul) {
+    var treatmentNum = req.body.treatmentNum;
+    console.log(treatmentNum);
+    connection.query("DELETE FROM mydb.treatments WHERE treatmentNum = ?",treatmentNum , function (err, result, fields) {
+        console.log("dashboard_delete<<<<");
+    });
+});
+
 
 app.listen(port);
 console.log('Server started! At http://localhost:' + port);
