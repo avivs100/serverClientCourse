@@ -28,13 +28,14 @@
                   <div class="contact-us text-center">
                       <h2 style="color: aliceblue;">Contact Us</h2>
                       <br>
+                      <br>
                       <div class="row">
                           <div class="col-md-6">
                               <div class="mt-5 text-center px-3">
                                   <div class="d-flex flex-row align-items-center contact-support"> <span class="icons"><i class="fa fa-user-md"></i></span>
                                       <div class="address text-left"> 
                                           <p>Need 24/7 support </p>
-                                          <button class = "support-button" >CONTACT SUPPORT</button>
+                                          <button class = "support-button" id = "Contact" >CONTACT SUPPORT</button>
                                           <br>
                                       </div>
                                   </div>
@@ -61,24 +62,32 @@
                                       <h5>Send Message</h5>
                                       <div class="mt-4 inputs"> 
                                         <input type="text" class="form-control" id="name" placeholder="Name"> 
-                                        <input type="text" class="form-control"id="email" placeholder="Email"> 
-                                          <div>
-                                            <select class="body_text" name="critical">
+                                      <div class="mt-4 inputs">
+                                          <br>
+                                        <input type="text" class="form-control"id="email" placeholder="Email">
+                                          <!--<div> --></div>
+                                            <div class="text-left px-1"  style="padding-top: 3%">
+                                            <select class="body_text" id = "select_box" name="critical">
                                                 <option value="Select"> Subject </option>
                                                 <option value="LOW"> Low </option>
                                                 <option value="NORMAL"> Normal </option>
                                                 <option value="HIGH"> High </option>
                                                 <option value="CRITICAL"> Critical </option>      
                                             </select>
-                                          </div>
-                                        
-                                        <textarea class="form-control" id="message" placeholder="Type your message"></textarea> 
-                                      </div>
+                                            </div>
+                                            <br>
+                                         <!-- </div> -->
+                                         </div>
+                                         <div>
+                                        <textarea type="text" class="form-control" id="message" placeholder="Type your message (25 characters or more)"></textarea> </div>
+                                     
                                       
                                       
 
 
-                                      <div class="button mt-4 text-left" onclick="signInValidation(document.getElementById('name').value,document.getElementById('email').value,document.getElementById('dropdownMenuButton').value,document.getElementById('message').value);"> <button class="btn btn-dark">Send</button> </div>
+                                      <!--<div class="button mt-4 text-left" onclick="signInValidation(document.getElementById('name').value,document.getElementById('email').value,document.getElementById('dropdownMenuButton').value,document.getElementById('message').value);"> <button class="btn btn-dark">Send</button> </div>-->
+                                      <div class="button mt-4 text-left"> <button class="btn btn-dark" id="contact_button">Send</button> </div>
+                                     </div>
                                   </div>
                               </div>
                           </div>
@@ -91,3 +100,53 @@
 
   </body>
 </html>
+
+
+    <script>
+        $(document).ready(function(){
+          $("#contact_button").click(function(){
+              var temp = contact_us();
+              switch(temp) {
+                case "Email_is_empty":
+                alert("Email field must not be empty!");
+                return;
+               break;
+                 case "Not a valid email":
+                 alert("Not a valid email address!");
+                return;
+               break;
+               case "Messasge_is_empty":
+                 alert("Message field must not be empty!");
+                 return; 
+                 break;
+                case "Less_then_25":
+                 alert("Message field must contain more then 25 words!");
+                 return;
+                 break;
+            default:
+    // code block
+}
+            email=$("#email").val();
+            select_input=$("#select_box").val();
+            if (select_input === "Select")
+            {
+                alert("Must choose severity!");
+                return;
+            }
+            my_message=$("#message").val();
+    
+            /* if valid, send to server and check if already exist */
+            $.post("http://localhost:8080/contactUsPage",{email: email, my_selection: select_input, xMessage:my_message}, function(data){
+                 console.log(data);
+            if (data === "SUCCESS")
+            {
+                alert("Mail was sent to the garage owners!");
+            }
+            else{
+                alert("Some error has been detected! we will fix it ASAP");
+
+            }
+            });
+          });
+        });
+    </script>
