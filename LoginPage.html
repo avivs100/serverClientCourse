@@ -54,7 +54,7 @@
                                
                               </div>
                           </div>
-
+                          <input type="checkbox" value="checkbox" id="checkbox" > <label for="rememberMe">Remember me</label>
                         <div class="row">
                             <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input">  </div> <a href="ForgotPassword.html" class="ml-auto mb-0 text sm">Forgot Password?</a>
                         </div>
@@ -136,30 +136,4 @@
       return true;
   }
 
-</script>
-<script>
-if ($('#remember').attr('checked')) {
-  var username = $('#email').attr("value");
-  var password = $('#psw').attr("value");
-  // set cookies to expire in 14 days
-  $.cookie('email', username, { expires: 14 });
-  $.cookie('psw', password, { expires: 14 });
-  $.cookie('remember', true, { expires: 14 });
-  } else {
-  // reset cookies
-  $.cookie('email', null);
-  $.cookie('psw', null);
-  $.cookie('remember', null);
-  }
-</script>
-
-<script>
-var remember = $.cookie('remember');
-if ( remember == 'true' ) {
-var username = $.cookie('email');
-var password = $.cookie('psw');S
-// autofill the fields
-$('#email').attr("value", username);
-$('#psw').attr("value", password);
-}
 </script>
