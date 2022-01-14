@@ -16,7 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-   
+    <script src ="js/DashboardScript.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -128,21 +128,21 @@
           
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="container-fluid table-responsive">
-            <table id="dashTable" class="display table table-dark" style="width:100%" >
-                <thead>
-                    <tr>
-                        <th scope="col">Treatment Number</th>
-                        <th scope="col">Treatment Information</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Worker email</th>
-                        <th scope="col">Car Number</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody" style="color: rgb(39, 37, 37)">
-                  
-                </tbody>
-            </table>
+            <table id="example" class="display table table-dark" style="width:100%">
+              <thead>
+                  <tr> 
+                      <th> treatmentNum</th>
+                      <th> treatmentInfo</th>
+                      <th> date</th>
+                      <th> workerEmail</th>
+                      <th> carNum</th>
+                      <th> Action </th>
+                  </tr>
+              </thead>
+              <tbody id="tbody" style="color: rgb(39, 37, 37)">
+  
+              </tbody>
+          </table>
          </div>
         </main>
         </div>
