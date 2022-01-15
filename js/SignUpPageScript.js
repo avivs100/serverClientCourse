@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 
 // Add your code here
-function createAccountAndValidate(e,p,rp,firstName,lastName)
+function Validate(e,p,rp,firstName,lastName)
           {
               var validationRules = "Minimum 6 Characters\nMust Include an Uppercase Character\nMust Include an Lowercase Character\n";
               validationRules += "Must Include a Number\nMust Include a Special Character (!, @, #, etc.).";
@@ -26,99 +26,72 @@ function createAccountAndValidate(e,p,rp,firstName,lastName)
               var UpperCaseCheck = new RegExp(
                 "^(?=.*[A-Z]).+$"
               );
-              var specialCaseCheck = new RegExp(
-                "^(?=.*[!@#$%^&*()-_=+\|{};:/?.><]).+$"
-              );
+              var specialCaseCheck = /^(?=.*[!@#\$%\^&\*()\-_\=\+\\\|\[\]\{\};:/\?\.\>\<\"])/;
             if(! re.test(String(e).toLowerCase()))
             {
                 
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal2');
+                var mymodal = $('#Modal2');
                 mymodal.find('.modal-body').text('Please enter a valid email\n');
                 mymodal.modal(newLocal);
                 console.log("8\n");             
-                return;
+                return false;
             }
             else if (String(p).length<6)
             {
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal2');
+                var mymodal = $('#Modal2');
                 mymodal.find('.modal-body').text("Pass should contain at least 6 letters\n\n"+validationRules);
                 mymodal.modal(newLocal);
                 console.log("7\n"); 
-                return;
+                return false;
             }
             else if (!lowerCaseCheck.test(p))
             {
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal2');
+                var mymodal = $('#Modal2');
                 mymodal.find('.modal-body').text("Pass not contain lowercase\n\n"+validationRules);
                 mymodal.modal(newLocal);
                 console.log("6\n"); 
-                return;
+                return false;
             }  
             else if (!UpperCaseCheck.test(p))
             {
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal2');
+                var mymodal = $('#Modal2');
                 mymodal.find('.modal-body').text("Pass not contain uppercase\n\n"+validationRules);
                 mymodal.modal(newLocal);
                 console.log("5\n"); 
-                return;
+                return false;
             } 
             else if (!specialCaseCheck.test(p))
             {
-                if(p.includes("["))
-                    return;
-                if(p.includes("]"))
-                    return;
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal2');
+                var mymodal = $('#Modal2');
                 mymodal.find('.modal-body').text("Pass not contain special char\n\n"+validationRules);
                 mymodal.modal(newLocal);
                 console.log("4\n");                 
-                return;
+                return false;
             } 
             else if (!numberCaseCheck.test(p))
             {
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal2');
+                var mymodal = $('#Modal2');
                 mymodal.find('.modal-body').text("Pass not contain number\n\n"+validationRules);
                 mymodal.modal(newLocal);
                 console.log("3\n");             
-                return;
+                return false;
             }   
             else if (!(p==rp))
             {
                 const newLocal = 'show';
-                var mymodal = $('#ErrorModal2');
+                var mymodal = $('#Modal2');
                 mymodal.find('.modal-body').text("Confirmation faild, sorry try again !\n");
                 mymodal.modal(newLocal); 
                 console.log("2\n");            
-                return;
+                return false;
             }
             else {
-                const newLocal = 'show';
-                var mymodal = $('#ErrorModal2');
-                mymodal.find('.modal-body').text("$$$$$$$$$$$$$$Email: "+e+"\n"+"Password: "+p+"\n");
-                mymodal.modal(newLocal);
-                console.log("1\n"); 
-                
-                /** send to server */
-                app.post("http://localhost:8080/SignUpPage", function(req, res) {
-                    var email = e;
-                    var password = p;
-                    var firstName = firstName;
-                    var lastName = lastName
-                    res.send(email + ' ' + password + ' ' + firstName + ' ' + lastName);
-                    });
-
-                    
-                
-
-                
-
-
+                return true;
             } 
-            console.log(""+e+"\n"+p);
           }

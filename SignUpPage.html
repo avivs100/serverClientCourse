@@ -68,7 +68,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel2">Error</h5>
+              <h5 class="modal-title" id="exampleModalLabel2">Alert</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -93,32 +93,33 @@
       $("#submit").click(function(){
         email=$("#email").val();
         password=$("#pass").val();
+        rPassword=$("#ConfirmPass").val();
         firstName=$("#firstName").val();
         lastName=$("#lastName").val();
 
-        /* validate */
-          //TODO
-
-        /* if valid, send to server and check if already exist */
-        $.post("http://localhost:8080/SignUpPage",{email: email,password: password,firstName: firstName , lastName: lastName}, function(data){
-          // console.log(data);
-          if(data == "EXIST"){
-            alert("EXIST");
-          }
-          else if(data == "SUCCESS"){
-            const newLocal = 'show';
-            var mymodal = $('#Modal2');
-            mymodal.find('.modal-body').text('Please enter a valid email\n');
-            mymodal.modal(newLocal);
-            // alert("Singup seccessfully \n" + 
-            //                                 "User: " + email);
-            //location.replace("http://localhost:8080/ForgotPassword");
-          }
-          else if(data == "SQL ERROR"){
-            alert("SQL ERROR!!!");
-          }
-        });
-        return false;
+        /* validate */  
+        if(Validate(email,password,rPassword,firstName,lastName)){
+          /* if valid, send to server and check if already exist */
+          $.post("http://localhost:8080/SignUpPage",{email: email,password: password,firstName: firstName , lastName: lastName}, function(data){
+            // console.log(data);
+            if(data == "EXIST"){
+              const newLocal = 'show';
+              var mymodal = $('#Modal2');
+              mymodal.find('.modal-body').text('This Email is already exist\nPlease signup with other one\n');
+              mymodal.modal(newLocal);
+            }
+            else if(data == "SUCCESS"){
+              const newLocal = 'show';
+              var mymodal = $('#Modal2');
+              mymodal.find('.modal-body').text('Sigunup done\nEmail:'+email);
+              mymodal.modal(newLocal);
+              location.replace("http://localhost:8080/dashboard");
+            }
+            else if(data == "SQL ERROR"){
+              alert("SQL ERROR!!!");
+            }
+          });
+        }//if
       });
     });
-</script>
+    </script>

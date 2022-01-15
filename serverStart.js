@@ -11,7 +11,6 @@ app.use(jsonParser);
 
 /** DATA BASE  */
 var connection = require('./DBconfig.js');
-
 const encryption = require("./encryption");
 
 
@@ -111,8 +110,6 @@ app.post('/SignUpPage' , function (req, res){
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
     
-    
-    //console.log("From client post request:" + email + password + firstName + lastName);
     /** check if exist in DB */
     connection.query("SELECT email FROM mydb.users WHERE email = ?", email, function (err, result, fields) {
         
@@ -123,11 +120,15 @@ app.post('/SignUpPage' , function (req, res){
                 password = encryption.encrypt(password);
                 const VALUES = "('" + email + "','"  + password  + "','"  + firstName +  "','" +  lastName + "');";
                 query_text = 'INSERT INTO mydb.users (email, encryptedPassword, firstName, lastName) VALUES' + VALUES;
-                connection.query(query_text,  function (err, result, fields){
+                connection.query(query_text,  async function (err, result, fields){
                     try{
                         if (err) throw err;
                         console.log("insert");
                         console.log(result);
+                        //send email to the user
+                        //TODO: Email dont work 
+                            // var emailToSend = JSON.stringify(email);
+                            // lib.sendMailToUser(nodemailer,emailToSend,"SUCCESSFULLY SIGNUP","You have signed up successfully to our website\nYour user is: "+email);
                         res.send("SUCCESS");
                     }
                     catch{
