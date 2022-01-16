@@ -11,7 +11,7 @@ $.post( '/dashboard' ).done(function (data1) {
                         {data: 'date'},
                         {data: 'workerEmail'},
                         {data: 'carNum'},
-                        {defaultContent: '<button onclick="deleteRow(123)">Delete</button> / <button onclick="deleteRow(123)">Edit</button>'}
+                        {defaultContent: '<button onclick="deleteRow(this)">Delete</button>'}
                     ]
                 } );
             });
@@ -21,9 +21,14 @@ $.post( '/dashboard' ).done(function (data1) {
 
 
 
-function deleteRow(treatmentNum) {
-    console.log("here");
-}
+function deleteRow(btnToDelete) {
+    let rowToDelete = btnToDelete.closest("tr");
+    let treatmentNum = rowToDelete.cells[0].textContent;
+    $.post( '/dashboard_delete' ,{treatmentNum: treatmentNum}).always(function () {
+            location.reload(); 
+    } ); 
+    location.reload();    
+  }
 
 
 function DashAction(actionNumber)

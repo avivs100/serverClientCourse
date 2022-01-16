@@ -16,19 +16,14 @@
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
-  
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!-- Popper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
 
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
   <script src=js/dashboardScript.js ></script>
@@ -71,10 +66,10 @@
 
         </tbody>
     </table>
+    <button id="AddBtn"> Add Treatment </button>
 
 </div>
 
-<button onclick="showModal()"> Add Treatment </button>
 
 </main>
 
@@ -90,7 +85,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="/action_page.php">
+        <form>
           <label for="fname">Treatment info :</label>
           <input type="text" id="TreatmentInfo" name="fname"><br><br>
           <label for="lname">Worker email :</label>
@@ -120,10 +115,14 @@
     location.reload();
 }
 
-function showModal(){
-  const newLocal = 'show';
-  var mymodal = $('#addModal');
-  mymodal.modal(newLocal);
-}
+$("#AddBtn").click(function(){
+      const newLocal = 'show';
+      var mymodal = $('#addModal');
+      //mymodal.find('.modal-body').text('Signup done\nEmail:'+email);
+      mymodal.modal(newLocal);
+      
+    });
 
 </script>
+
+

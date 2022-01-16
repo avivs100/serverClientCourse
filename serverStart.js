@@ -72,7 +72,7 @@ app.post('/dashboard_delete',jsonParser, async function (req, resul) {
 });
 
 
-app.post('/dashboard_insert', async function (req, resul) {
+app.post('/dashboard_insert', async function (req, res) {
     var treatmentNum;
     var treatmentInfo = req.body.treatmentInfo;
     var date = new Date().toISOString().slice(0, 19).replace('T', ' ');
