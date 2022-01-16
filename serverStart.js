@@ -11,6 +11,7 @@ app.use(jsonParser);
 
 /** DATA BASE  */
 var connection = require('./DBconfig.js');
+
 const encryption = require("./encryption");
 
 
@@ -67,6 +68,48 @@ app.post('/dashboard_delete',jsonParser, async function (req, resul) {
 });
 
 
+app.post('/dashboard_insert', async function (req, resul) {
+    var treatmentNum;
+    var treatmentInfo = req.body.treatmentInfo;
+    var date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    var workerEmail = req.body.workerEmail;
+    var carNum = req.body.carNum;
+
+    connection.query("SELECT max(treatmentNum) AS maxKey FROM mydb.treatments", function (err, result, fields) {
+        try{ 
+            if (err || result == "" ) throw err;
+            else{
+                treatmentNum = (result[0].maxKey) + 1;
+                console.log(treatmentNum);
+                /* insert row to DB */
+                const VALUES = "('" + treatmentNum + "','"  + treatmentInfo  + "','"  + date +  "','" +  workerEmail +  "','" + carNum + "');";
+                query_text = 'INSERT INTO mydb.treatments (treatmentNum, treatmentInfo, date, workerEmail, carNum) VALUES' + VALUES;
+                connection.query(query_text, function (err, result, fields) {
+                    try{
+                        if(err) throw err;
+                        else{
+                        console.log(">>>INSERTED INTO mydb.treatments:\n" + VALUES);
+                        res.send("SUCCESS");
+                        }
+                    }
+                    catch(err){
+                        console.log(err);
+
+                    }
+                });
+
+            }
+        }
+        catch(err){
+            console.error(err);
+            res.send("SQL ERROR");
+        }
+    });
+});
+
+
+
+
 app.listen(port);
 console.log('Server started! At http://localhost:' + port);
 
@@ -109,6 +152,7 @@ app.post('/SignUpPage' , function (req, res){
     var password = req.body.password;
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
+    
     
     /** check if exist in DB */
     connection.query("SELECT email FROM mydb.users WHERE email = ?", email, function (err, result, fields) {

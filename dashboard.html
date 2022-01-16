@@ -56,7 +56,7 @@
 <script>
 $.post( '/dashboard' ).done(function (data1) {
             $(document).ready(function() {
-                $('#example').DataTable( {
+               $('#example').DataTable( {
                     data : data1,
                     columns: [
                         {data: 'treatmentNum'},
@@ -64,16 +64,29 @@ $.post( '/dashboard' ).done(function (data1) {
                         {data: 'date'},
                         {data: 'workerEmail'},
                         {data: 'carNum'},
-                        {defaultContent: '<button onclick="deleteRow(treatmentNum)">Delete</button> / <button onclick="deleteRow(treatmentNum)">Edit</button>'}
+                        {defaultContent: '<button onclick="deleteRow(this)" class="btnDelete">Delete</button> / <button onclick="insertRow()">Edit</button>'}
                     ]
                 } );
             });
 } );
 
-function deleteRow(treatmentNum) {
-    
-    $.post( '/dashboard_delete' ,{treatmentNum: treatmentNum}).done(function () {
+
+function deleteRow(btnToDelete) {
+    let rowToDelete = btnToDelete.closest("tr");
+    let treatmentNum = rowToDelete.cells[0].textContent;
+    $.post( '/dashboard_delete' ,{treatmentNum: treatmentNum}).always(function () {
             location.reload(); 
-    } );    
+    } ); 
+    location.reload();    
 }
+
+function insertRow(){
+    $.post( '/dashboard_insert' ,{treatmentInfo: "?", workerEmail: "?",carNum: "?" }).done(function (data) {
+        if(data === "SUCCESS")
+            console.log("SUCCESS");
+    } );
+    location.reload();
+}
+
+
 </script>
