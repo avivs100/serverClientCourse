@@ -52,6 +52,10 @@ app.get('/dashboard', function (req, res) {
     res.sendFile(path.join(__dirname + '/dashboard.html'));
 })
 
+app.get('/dashboard2', function (req, res) {
+    res.sendFile(path.join(__dirname + '/dashboard2.html'));
+})
+
 // var dataToSend = [["Moshe","Cohen","22","moshe@gmail.com"],["david","Cohen","26","david@gmail.com"],["Moshe","adas","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"]];
 app.post('/dashboard',jsonParser, async function (req, resul) {
     connection.query("SELECT * FROM mydb.treatments", function (err, result, fields) {
@@ -148,31 +152,31 @@ connection.query("SELECT email,encryptedPassword FROM mydb.users WHERE email = ?
 });
 
 app.post('/SignUpPage' , function (req, res){
-    var email = encryption.encrypt(req.body.email);
+    var email = req.body.email;
+    var encrypted_email = encryption.encrypt(email);
     var password = req.body.password;
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
     
     
     /** check if exist in DB */
-    connection.query("SELECT email FROM mydb.users WHERE email = ?", email, function (err, result, fields) {
+    connection.query("SELECT email FROM mydb.users WHERE email = ?", encrypted_email, function (err, result, fields) {
         
         try{
             if (err) throw err;
             if(result == ""){
                 /** Enter user to the DB */
                 password = encryption.encrypt(password);
-                const VALUES = "('" + email + "','"  + password  + "','"  + firstName +  "','" +  lastName + "');";
+                const VALUES = "('" + encrypted_email + "','"  + password  + "','"  + firstName +  "','" +  lastName + "');";
                 query_text = 'INSERT INTO mydb.users (email, encryptedPassword, firstName, lastName) VALUES' + VALUES;
                 connection.query(query_text,  async function (err, result, fields){
                     try{
                         if (err) throw err;
                         console.log("insert");
-                        console.log(result);
                         //send email to the user
-                        //TODO: Email dont work 
-                            // var emailToSend = JSON.stringify(email);
-                            // lib.sendMailToUser(nodemailer,emailToSend,"SUCCESSFULLY SIGNUP","You have signed up successfully to our website\nYour user is: "+email);
+                        console.log("Email " + email);
+                            var emailToSend = email;//JSON.stringify(email);
+                            lib.sendMailToUser(nodemailer,emailToSend,"SUCCESSFULLY SIGNUP","You have signed up successfully to our website\nYour user is: "+email);
                         res.send("SUCCESS");
                     }
                     catch{
