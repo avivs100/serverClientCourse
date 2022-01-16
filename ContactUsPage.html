@@ -81,7 +81,25 @@
                                          <div>
                                         <textarea type="text" class="form-control" id="message" placeholder="Type your message (25 characters or more)"></textarea> </div>
                                      
-                                      
+                                                <!-- error model for recaptcha-->
+    <div class="modal fade" id="ErrorModal12" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="white-space: pre-line">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
                                       
 
 
@@ -106,21 +124,34 @@
         $(document).ready(function(){
           $("#contact_button").click(function(){
               var temp = contact_us();
+              const newLocal = 'show';
               switch(temp) {
                 case "Email_is_empty":
-                alert("Email field must not be empty!");
+                var mymodal = $('#ErrorModal12');
+                 mymodal.find('.modal-body').text('Email field must not be empty!\n');
+                mymodal.modal(newLocal);
+               // alert("Email field must not be empty!");
                 return;
                break;
                  case "Not a valid email":
-                 alert("Not a valid email address!");
+                var mymodal = $('#ErrorModal12');
+                 mymodal.find('.modal-body').text('Not a valid email address!!\n');
+                mymodal.modal(newLocal);
+               //  alert("Not a valid email address!");
                 return;
                break;
                case "Messasge_is_empty":
-                 alert("Message field must not be empty!");
+                var mymodal = $('#ErrorModal12');
+                 mymodal.find('.modal-body').text('Message field must not be empty!\n');
+                mymodal.modal(newLocal);
+                 //alert("Message field must not be empty!");
                  return; 
                  break;
                 case "Less_then_25":
-                 alert("Message field must contain more then 25 words!");
+                var mymodal = $('#ErrorModal12');
+                 mymodal.find('.modal-body').text('Message field must contain more then 25 words!\n');
+                mymodal.modal(newLocal);
+               //  alert("Message field must contain more then 25 words!");
                  return;
                  break;
             default:
@@ -130,7 +161,10 @@
             select_input=$("#select_box").val();
             if (select_input === "Select")
             {
-                alert("Must choose severity!");
+                var mymodal = $('#ErrorModal12');
+                mymodal.find('.modal-body').text('Must choose severity!\n');
+                mymodal.modal(newLocal);
+                //alert("Must choose severity!");
                 return;
             }
             my_message=$("#message").val();
@@ -140,10 +174,16 @@
                  console.log(data);
             if (data === "SUCCESS")
             {
-                alert("Mail was sent to the garage owners!");
+                var mymodal = $('#ErrorModal12');
+                mymodal.find('.modal-body').text('Mail was sent to the garage owners!\n');
+                mymodal.modal(newLocal);
+               // alert("Mail was sent to the garage owners!");
             }
             else{
-                alert("Some error has been detected! we will fix it ASAP");
+                var mymodal = $('#ErrorModal12');
+                mymodal.find('.modal-body').text('Some error has been detected! we will fix it ASAP\n');
+                mymodal.modal(newLocal);
+                //alert("Some error has been detected! we will fix it ASAP");
 
             }
             });
