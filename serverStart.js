@@ -69,7 +69,7 @@ app.get('/dashboard2', function (req, res) {
 
 // var dataToSend = [["Moshe","Cohen","22","moshe@gmail.com"],["david","Cohen","26","david@gmail.com"],["Moshe","adas","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"]];
 app.post('/dashboard',jsonParser, async function (req, resul) {
-    connection.query("SELECT * FROM mydb.treatments", function (err, result, fields) {
+    connection.query("SELECT * FROM heroku_e6423c3b14e0e99.treatments", function (err, result, fields) {
         resul.send(result);
     });
 });
@@ -77,7 +77,7 @@ app.post('/dashboard',jsonParser, async function (req, resul) {
 app.post('/dashboard_delete',jsonParser, async function (req, resul) {
     var treatmentNum = req.body.treatmentNum;
     console.log(treatmentNum);
-    connection.query("DELETE FROM mydb.treatments WHERE treatmentNum = ?",treatmentNum , function (err, result, fields) {
+    connection.query("DELETE FROM heroku_e6423c3b14e0e99.treatments WHERE treatmentNum = ?",treatmentNum , function (err, result, fields) {
         console.log("dashboard_delete<<<<");
     });
 });
@@ -90,20 +90,23 @@ app.post('/dashboard_insert', async function (req, res) {
     var workerEmail = req.body.workerEmail;
     var carNum = req.body.carNum;
 
-    connection.query("SELECT max(treatmentNum) AS maxKey FROM mydb.treatments", function (err, result, fields) {
+    connection.query("SELECT max(treatmentNum) AS maxKey FROM heroku_e6423c3b14e0e99.treatments", function (err, result, fields) {
         try{ 
-            if (err || result == "" ) throw err;
+            if (err) throw err;
+            
             else{
-                treatmentNum = (result[0].maxKey) + 1;
+                if (result == "") treatmentNum = 1;
+                else
+                    treatmentNum = (result[0].maxKey) + 1;
                 console.log(treatmentNum);
                 /* insert row to DB */
                 const VALUES = "('" + treatmentNum + "','"  + treatmentInfo  + "','"  + date +  "','" +  workerEmail +  "','" + carNum + "');";
-                query_text = 'INSERT INTO mydb.treatments (treatmentNum, treatmentInfo, date, workerEmail, carNum) VALUES' + VALUES;
+                query_text = 'INSERT INTO heroku_e6423c3b14e0e99.treatments (treatmentNum, treatmentInfo, date, workerEmail, carNum) VALUES' + VALUES;
                 connection.query(query_text, function (err, result, fields) {
                     try{
                         if(err) throw err;
                         else{
-                        console.log(">>>INSERTED INTO mydb.treatments:\n" + VALUES);
+                        console.log(">>>INSERTED INTO heroku_e6423c3b14e0e99.treatments:\n" + VALUES);
                         res.send("SUCCESS");
                         }
                     }
@@ -138,7 +141,7 @@ var password = encryption.encrypt(req.body.psw);
 console.log("HERHERERER");
 console.log(email);
 
-connection.query("SELECT email,encryptedPassword FROM mydb.users WHERE email = ?", email, function (err, result, fields) {  
+connection.query("SELECT email,encryptedPassword FROM heroku_e6423c3b14e0e99.users WHERE email = ?", email, function (err, result, fields) {  
     try{
         if (err) throw err;
         if(result == ""){
@@ -170,7 +173,7 @@ app.post('/SignUpPage' , function (req, res){
     
     
     /** check if exist in DB */
-    connection.query("SELECT email FROM mydb.users WHERE email = ?", email, function (err, result, fields) {
+    connection.query("SELECT email FROM heroku_e6423c3b14e0e99.users WHERE email = ?", email, function (err, result, fields) {
         
         try{
             if (err) throw err;
@@ -178,7 +181,7 @@ app.post('/SignUpPage' , function (req, res){
                 /** Enter user to the DB */
                 password = encryption.encrypt(password);
                 const VALUES = "('" + email + "','"  + password  + "','"  + firstName +  "','" +  lastName + "');";
-                query_text = 'INSERT INTO mydb.users (email, encryptedPassword, firstName, lastName) VALUES' + VALUES;
+                query_text = 'INSERT INTO heroku_e6423c3b14e0e99.users (email, encryptedPassword, firstName, lastName) VALUES' + VALUES;
                 connection.query(query_text,  async function (err, result, fields){
                     try{
                         if (err) throw err;
@@ -220,7 +223,7 @@ app.post('/contactUsPage',jsonParser, async function (req, res) {
 app.post('/ForgotPassword',jsonParser, async function (req, resul) {
     var emailToSend = req.body.Email;
     console.log(emailToSend);
-    connection.query("SELECT encryptedPassword FROM mydb.users WHERE email = ?", emailToSend, function (err, result, fields) {  
+    connection.query("SELECT encryptedPassword FROM heroku_e6423c3b14e0e99.users WHERE email = ?", emailToSend, function (err, result, fields) {  
         try{
             if (err) throw err;
             if(result == ""){
