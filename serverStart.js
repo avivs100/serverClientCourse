@@ -126,21 +126,23 @@ app.get('/Login', function (req, res) {
 app.post('/Login' , function (req, res){
 var email = req.body.email; //encryption.encrypt(req.body.email);
 var password = encryption.encrypt(req.body.psw);
+console.log("HERHERERER");
+console.log(email);
 
 connection.query("SELECT email,encryptedPassword FROM mydb.users WHERE email = ?", email, function (err, result, fields) {  
     try{
         if (err) throw err;
         if(result == ""){
+            console.log("NO SUCH EMAIL");
             res.send("NO SUCH EMAIL");
-            console.log("here 3");
         }
         else if(password === result[0].encryptedPassword){ 
             res.send("SUCCESS");
-            console.log("here 2");
+            console.log("SUCCESS");
         }
         else{
             res.send("PASSWORD NOT MATCH");
-            console.log("here 1");
+            console.log("PASSWORD NOT MATCH");
         }
     }
     catch(err){

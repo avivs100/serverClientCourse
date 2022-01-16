@@ -70,7 +70,7 @@
 
                             <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input">  </div> <a href="ForgotPassword.html" class="ml-auto mb-0 text sm">Forgot Password?</a>
                         </div>
-                        <div class="Login row justify-content-md-center"> <input id="submit"  type="submit" name="submit" value="Log In" method="post" onclick="return ValidateEmail(document.mailForm.mailText)" > </div>
+                        <div class="Login row justify-content-md-center"> <input id="submit"  type="submit" name="submit" value="Log In" > </div>
                         <div class="row justify-content-md-center"> <small class="font-weight-bold">Don't have an account? <a href="SignUpPage.html" class="text-danger "> Sign Up</a></small>  </div>
                        <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
                        <noscript>Please enable JavaScript to submit this form.</noscript>
@@ -153,40 +153,55 @@
 
   </body>
 </html>
-  <script>
-        $(document).ready(function(){
-          var user,pass;
-          $("#submit").click(function(){
-            user=$("#email").val();
-            pass=$("#psw").val();
-            if(validPswCheck()==true && recaptchaFunc()==true){
-              //$(location).attr('href','ContactUsPage.html');
-            }
-
-            $.post("http://localhost:8080/Login",{email: user,psw: pass}, function(data){
-              if(data === "NO SUCH EMAIL") {
-                  alert("NO SUCH EMAIL");
-                }
-                else if(data === "SUCCESS"){
-                  alert("SUCCESS");
-                }
-                else if(data === "PASSWORD NOT MATCH"){
-                  alert("PASSWORD NOT MATCH");
-                }
-            });
-            return false;
-          });
-        });
-</script>
 
 <script>
-    function recaptchaFunc(){
-    var response = grecaptcha.getResponse();
-    if(response.length==0)
+  // $(document).ready(function(){
+    // var user,pass;
+    $("#submit").click(function(){
+      console.log("click");
+      var user=$("#email").val();
+      var pass=$("#psw").val();
+      if(loginBtn(user,pass) && recaptchaFunc()){
+        $.post("/Login",{email: user,psw: pass}, function(data){
+          if(data === "NO SUCH EMAIL") {
+            const newLocal = 'show';
+            var mymodal = $('#ErrorModal');
+            mymodal.find('.modal-body').text('NO SUCH EMAIL\n');
+            mymodal.modal(newLocal);
+            return false;
+          }
+          else if(data === "SUCCESS"){
+            $(location).attr('href','/dashboard2.html');
+            return false;
+          }
+          else if(data === "PASSWORD NOT MATCH"){
+            const newLocal = 'show';
+            var mymodal = $('#ErrorModal');
+            mymodal.find('.modal-body').text('Incorrect password!\nTry again..');
+            mymodal.modal(newLocal);
+            return false;
+          }
+        });
+        return false;
+      }
       return false;
-    else
-      return true;
+    });
+  // });
+
+function recaptchaFunc(){
+  var response = grecaptcha.getResponse();
+  if(response.length==0){
+    const newLocal = 'show';
+    var mymodal = $('#ErrorModal');
+    mymodal.find('.modal-body').text('Recaptcha is empty!\n');
+    mymodal.modal(newLocal);
+    return false;
   }
+  else{
+    console.log("TRUE");
+    return true;
+  }
+}
 
 </script>
 

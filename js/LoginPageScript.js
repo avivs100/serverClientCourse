@@ -1,60 +1,69 @@
 // Add your code here
 
-var validpsw=false;
 
-function ValidateEmail(inputText)
+
+function ValidateEmail(userEmail)
 {   
-    
-    const newLocal = 'show';
-    var answerFromRecaptcha = recaptchaFunc();
-
-    if (answerFromRecaptcha == true){
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-    if(inputText.value.match(mailformat) && validpsw)
-    {
-        var mymodal = $('#welcomModal');
-        mymodal.find('.modal-body').text('Valid email address and password!\n');
-        mymodal.modal(newLocal);
-        //document.form1.text1.focus();
+    if(userEmail.match(mailformat))
         return true;
-    }
-    else if(inputText.value.match(mailformat) && validpsw==false)
-    {
-        var mymodal = $('#ErrorModal2');
-        mymodal.find('.modal-body').text('You have entered an invalid password!\n');
-        mymodal.modal(newLocal);
+    return false;      
+}
+  
+function validatePassword(password) {
+    var numberCaseCheck = new RegExp(
+        "^(?=.*[0-9]).+$"
+      );
+    var lowerCaseCheck = new RegExp(
+        "^(?=.*[a-z]).+$"
+      );
+      var UpperCaseCheck = new RegExp(
+        "^(?=.*[A-Z]).+$"
+      );
+      var specialCaseCheck = /^(?=.*[!@#\$%\^&\*()\-_\=\+\\\|\[\]\{\};:/\?\.\>\<\"])/;
+
+    if (String(password).length<6)
         return false;
-    }
-    else if(!inputText.value.match(mailformat) && validpsw)
-    {
-        var mymodal = $('#ErrorModal2');
-        mymodal.find('.modal-body').text('You have entered an invalid email address!\n');
-        mymodal.modal(newLocal);
+    if (!lowerCaseCheck.test(password))
+        return false; 
+    if (!UpperCaseCheck.test(password))
         return false;
-    }
-    else 
+    if (!specialCaseCheck.test(password))
+        return false;
+    if (!numberCaseCheck.test(password))
+        return false;
+    return true;  
+}
+
+
+function loginBtn(email,password) {
+    var newLocal = 'show';
+    var vEmail = ValidateEmail(email);
+    var vPassword = validatePassword(password);
+    if(!vEmail && !vPassword)
     {
         var mymodal = $('#ErrorModal2');
         mymodal.find('.modal-body').text('you have entered an invalid email address and invalid password!\n');
         mymodal.modal(newLocal);
         return false;
     }
-}
-    else{
-        const newLocal = 'show';
-        var mymodal = $('#ErrorModal');
-        mymodal.find('.modal-body').text('recapcha empty\n');
+    else if(!vEmail){
+        var mymodal = $('#ErrorModal2');
+        mymodal.find('.modal-body').text('You have entered an invalid email address!\n');
         mymodal.modal(newLocal);
+        return false;
     }
-
+    else if(!vPassword){
+        var mymodal = $('#ErrorModal2');
+        mymodal.find('.modal-body').text('You have entered an invalid password!\n');
+        mymodal.modal(newLocal);
+        return false;
+    }
+    /** Email and password are valid */
+    return true;
 }
 
-function validPswCheck(){
-    var val;
-    val=validpsw;
-    return val;
-}
+
 
 function LogInValidation(e,p)
           {
@@ -81,11 +90,9 @@ function LogInValidation(e,p)
             if(myInput.value.match(lowerCaseLetters)) {  
                  letter.classList.remove("invalid");
                  letter.classList.add("valid");
-                 validpsw=true;
              } else {
                 letter.classList.remove("valid");
                 letter.classList.add("invalid");
-                validpsw=false;
             }
   
         // Validate capital letters
@@ -93,12 +100,10 @@ function LogInValidation(e,p)
             if(myInput.value.match(upperCaseLetters)) {  
                 capital.classList.remove("invalid");
                 capital.classList.add("valid");
-                validpsw=true;
 
             } else {
                 capital.classList.remove("valid");
                 capital.classList.add("invalid");
-                validpsw=false;
             }
 
         // Validate numbers
@@ -106,23 +111,18 @@ function LogInValidation(e,p)
             if(myInput.value.match(numbers)) {  
                 number.classList.remove("invalid");
                 number.classList.add("valid");
-                console.log("1");
-                validpsw=true;
             } else {
                 number.classList.remove("valid");
                 number.classList.add("invalid");
-                validpsw=false;
             }
   
         // Validate length
             if(myInput.value.length >= 6) {
                 length.classList.remove("invalid");
                 length.classList.add("valid");
-                validpsw=true;
             } else {
                 length.classList.remove("valid");
                 length.classList.add("invalid");
-                validpsw=false;
             }
         
 
@@ -133,20 +133,14 @@ function LogInValidation(e,p)
                 console.log("1");
                 special.classList.remove("invalid");
                 special.classList.add("valid");
-                validpsw=true;
             } else {
                 special.classList.remove("valid");
                 special.classList.add("invalid");
-                validpsw=false;
             }
         }
 
-    }
+}
 
 
-  document.addEventListener('DOMContentLoaded', (event) => {
-    const recaptcha = document.querySelector('.g-recaptcha');
-    recaptcha.setAttribute("data-theme", "dark");
-  });
 
   
