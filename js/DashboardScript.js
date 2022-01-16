@@ -1,7 +1,7 @@
 
 
 
-$.post( '/dashboard2' ).done(function (data1) {
+$.post( '/dashboard' ).done(function (data1) {
             $(document).ready(function() {
                 $('#example').DataTable( {
                     data : data1,
