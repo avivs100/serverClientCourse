@@ -125,7 +125,7 @@ app.get('/Login', function (req, res) {
 })
 
 app.post('/Login' , function (req, res){
-var email = encryption.encrypt(req.body.email);
+var email = req.body.email; //encryption.encrypt(req.body.email);
 var password = encryption.encrypt(req.body.psw);
 
 connection.query("SELECT email,encryptedPassword FROM mydb.users WHERE email = ?", email, function (err, result, fields) {  
@@ -153,21 +153,21 @@ connection.query("SELECT email,encryptedPassword FROM mydb.users WHERE email = ?
 
 app.post('/SignUpPage' , function (req, res){
     var email = req.body.email;
-    var encrypted_email = encryption.encrypt(email);
+    // var encrypted_email = encryption.encrypt(email);
     var password = req.body.password;
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
     
     
     /** check if exist in DB */
-    connection.query("SELECT email FROM mydb.users WHERE email = ?", encrypted_email, function (err, result, fields) {
+    connection.query("SELECT email FROM mydb.users WHERE email = ?", email, function (err, result, fields) {
         
         try{
             if (err) throw err;
             if(result == ""){
                 /** Enter user to the DB */
                 password = encryption.encrypt(password);
-                const VALUES = "('" + encrypted_email + "','"  + password  + "','"  + firstName +  "','" +  lastName + "');";
+                const VALUES = "('" + email + "','"  + password  + "','"  + firstName +  "','" +  lastName + "');";
                 query_text = 'INSERT INTO mydb.users (email, encryptedPassword, firstName, lastName) VALUES' + VALUES;
                 connection.query(query_text,  async function (err, result, fields){
                     try{
@@ -208,7 +208,25 @@ app.post('/contactUsPage',jsonParser, async function (req, res) {
 });
 
 app.post('/ForgotPassword',jsonParser, async function (req, resul) {
-    var emailToSend = JSON.stringify(req.body.Email);
-    lib.sendMailToUser(nodemailer,emailToSend,"Forgot password email","simulation of forgot password");
-    resul.send("EMET ani gever");
-});
+    var emailToSend = req.body.Email;
+    console.log(emailToSend);
+    connection.query("SELECT encryptedPassword FROM mydb.users WHERE email = ?", emailToSend, function (err, result, fields) {  
+        try{
+            if (err) throw err;
+            if(result == ""){
+                console.log("NO_SUCH_EMAIL");
+                resul.send("NO_SUCH_EMAIL");
+            }
+            else{
+                var password = encryption.decrypt(result[0].encryptedPassword);
+                console.log("SUCCESS");
+                lib.sendMailToUser(nodemailer,emailToSend,"Forgot password email","Your password is: " + password);
+                resul.send("SUCCESS");
+            }
+        }
+        catch(err){
+            console.error(err);
+            resul.send("SQL ERROR");
+        }
+        }); 
+    });
