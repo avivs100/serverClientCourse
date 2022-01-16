@@ -101,7 +101,6 @@ app.post('/dashboard_insert', async function (req, resul) {
 
                     }
                 });
-
             }
         }
         catch(err){
