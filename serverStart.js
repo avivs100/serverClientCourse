@@ -93,6 +93,13 @@ app.post('/dashboard_delete',jsonParser, async function (req, resul) {
     console.log(treatmentNum);
     connection.query("DELETE FROM heroku_e6423c3b14e0e99.treatments WHERE treatmentNum = ?",treatmentNum , function (err, result, fields) {
         console.log("dashboard_delete<<<<");
+        try{
+            if (err) throw err;
+        }
+        catch(err){
+            console.error(err);
+            res.send("SQL ERROR");
+        }
     });
 });
 
