@@ -100,7 +100,7 @@
         /* validate */  
         if(Validate(email,password,rPassword,firstName,lastName)){
           /* if valid, send to server and check if already exist */
-          $.post("http://localhost:8080/SignUpPage",{email: email,password: password,firstName: firstName , lastName: lastName}, function(data){
+          $.post("/SignUpPage",{email: email,password: password,firstName: firstName , lastName: lastName}, function(data){
             // console.log(data);
             if(data == "EXIST"){
               const newLocal = 'show';
@@ -113,7 +113,7 @@
               var mymodal = $('#Modal2');
               mymodal.find('.modal-body').text('Signup done\nEmail:'+email);
               mymodal.modal(newLocal);
-              location.replace("http://localhost:8080/dashboard2");
+              location.replace("/dashboard2");
             }
             else if(data == "SQL ERROR"){
               alert("SQL ERROR!!!");

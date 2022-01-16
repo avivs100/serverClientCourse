@@ -153,7 +153,7 @@ app.post('/dashboard_insert', async function (req, res) {
 
 
 app.get('/Login', function (req, res) {
-    res.sendFile(path.join(__dirname + '/ContactUsPage.html'));
+    res.sendFile(path.join(__dirname + '/LoginPage.html'));
 })
 
 app.post('/Login' , function (req, res){

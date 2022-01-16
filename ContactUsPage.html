@@ -136,7 +136,7 @@
             my_message=$("#message").val();
     
             /* if valid, send to server and check if already exist */
-            $.post("http://localhost:8080/contactUsPage",{email: email, my_selection: select_input, xMessage:my_message}, function(data){
+            $.post("/contactUsPage",{email: email, my_selection: select_input, xMessage:my_message}, function(data){
                  console.log(data);
             if (data === "SUCCESS")
             {
