@@ -15,6 +15,8 @@ var mysql      = require('mysql');
         console.log("Error while connecting with database");
     }
     });
+
+module.exports = connection;
     // var connection = mysql.createConnection({
     //     host     : 'localhost',
     //     user     : 'root',
@@ -30,7 +32,6 @@ var mysql      = require('mysql');
     // }
     // });
 
-    module.exports = connection;
 
 
 

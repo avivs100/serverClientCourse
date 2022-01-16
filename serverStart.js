@@ -68,9 +68,23 @@ app.get('/dashboard2', function (req, res) {
 })
 
 // var dataToSend = [["Moshe","Cohen","22","moshe@gmail.com"],["david","Cohen","26","david@gmail.com"],["Moshe","adas","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"]];
-app.post('/dashboard',jsonParser, async function (req, resul) {
+app.post('/dashboard',jsonParser, async function (req, res) {
     connection.query("SELECT * FROM heroku_e6423c3b14e0e99.treatments", function (err, result, fields) {
-        resul.send(result);
+        try{
+            if (err) throw err;
+            if(result == ""){
+                console.log("NO result");
+                res.send("NO SUCH EMAIL");
+            }
+            else{
+                console.log("PASSWORD NOT MATCH");
+                res.send(result);
+            }
+        }
+        catch(err){
+            console.error(err);
+            res.send("SQL ERROR");
+        }
     });
 });
 
