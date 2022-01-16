@@ -50,13 +50,68 @@ app.get('/ForgotPassword', function (req, res) {
 app.get('/dashboard', function (req, res) {
     res.sendFile(path.join(__dirname + '/dashboard.html'));
 })
+  // columns: [
+                        //     {data: 'treatmentNum'},
+                        //     {data: 'treatmentInfo'},
+                        //     {data: 'date'},
+                        //     {data: 'workerEmail'},
+                        //     {data: 'carNum'},
+                        //     {defaultContent: '<button onclick="deleteRow(123)">Delete</button> / <button onclick="deleteRow(123)">Edit</button>'}
+                        // ]
+var cars = [
+    {
+      "treatmentNum": "1",
+      "treatmentInfo": "minivan",
+      "date": new Date('2017-01-03'),
+      "workerEmail": "sdsd@gmail.com",
+      "carNum": 7      
+    },
+    {
+        "treatmentNum": "2",
+        "treatmentInfo": "minivan",
+        "date": new Date('2017-01-03'),
+        "workerEmail": "sdsd@gmail.com",
+        "carNum": 7 
+    },
+    {
+        "treatmentNum": "3",
+        "treatmentInfo": "minivan",
+        "date": new Date('2017-01-03'),
+        "workerEmail":"sdsd@gmail.com",
+        "carNum": 7 
+    },
+    {
+        "treatmentNum": "4",
+        "treatmentInfo": "minivan",
+        "date": new Date('2017-01-03'),
+        "workerEmail":"sdsd@gmail.com",
+        "carNum": 7 
+    },
+    {
+        "treatmentNum": "5",
+        "treatmentInfo": "minivan",
+        "date": new Date('2017-01-03'),
+        "workerEmail": "sdsd@gmail.com",
+        "carNum": 7 
+    }
+    ];
 
-// var dataToSend = [["Moshe","Cohen","22","moshe@gmail.com"],["david","Cohen","26","david@gmail.com"],["Moshe","adas","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"],["Moshe","Cohen","22","moshe@gmail.com"]];
+
+var dataToSend = [["Moshe","Cohen","22","moshe@gmail.com","david"],["david","Cohen","26","david@gmail.com","david"],["Moshe","adas","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"],["Moshe","Cohen","22","moshe@gmail.com","david"]];
 app.post('/dashboard',jsonParser, async function (req, resul) {
-    connection.query("SELECT * FROM mydb.treatments", function (err, result, fields) {
-        resul.send(result);
-    });
-});
+    //connection.query("SELECT * FROM mydb.treatments", function (err, result, fields) {
+        //resul.send(result);
+        console.log("test");
+        resul.send(cars); 
+    })
+    
+app.post('/getDashBoardData',jsonParser, async function (req, resul) {
+        //connection.query("SELECT * FROM mydb.treatments", function (err, result, fields) {
+            //resul.send(result);
+            console.log("test");
+            resul.send(cars); 
+        })
+
 
 app.post('/dashboard_delete',jsonParser, async function (req, resul) {
     var treatmentNum = req.body.treatmentNum;

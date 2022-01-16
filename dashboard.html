@@ -3,14 +3,18 @@
 <html>
 
   <head>
-    <script src ="js/dashboardScript.js"></script>
-    <title > Forgot Password </title>
+    <!-- <script src ="js/dashboardScript.js"></script> -->
+    <title > Dashboard </title>
     <meta charset="utf-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -21,13 +25,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css“ href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8“ src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-  </head>
-  <body>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
   
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script src=js/dashboardScript.js ></script>
+  </head>
+  <body>
+   
     
     <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
         <table id="example" class="display table table-dark" style="width:100%">
@@ -53,27 +57,25 @@
   </body>
 </html>
 
-<script>
-$.post( '/dashboard' ).done(function (data1) {
-            $(document).ready(function() {
-                $('#example').DataTable( {
-                    data : data1,
-                    columns: [
-                        {data: 'treatmentNum'},
-                        {data: 'treatmentInfo'},
-                        {data: 'date'},
-                        {data: 'workerEmail'},
-                        {data: 'carNum'},
-                        {defaultContent: '<button onclick="deleteRow(treatmentNum)">Delete</button> / <button onclick="deleteRow(treatmentNum)">Edit</button>'}
-                    ]
-                } );
-            });
-} );
-
-function deleteRow(treatmentNum) {
-    
-    $.post( '/dashboard_delete' ,{treatmentNum: treatmentNum}).done(function () {
-            location.reload(); 
-    } );    
+<!-- <script>
+    function a() {
+    $.post( '/dashboard' ).done(function (data1) {
+                $(document).ready(function() {
+                    $('#example').DataTable( {
+                        data : data1,
+                        columns: [
+                            {data: 'treatmentNum'},
+                            {data: 'treatmentInfo'},
+                            {data: 'date'},
+                            {data: 'workerEmail'},
+                            {data: 'carNum'},
+                            {defaultContent: '<button onclick="deleteRow(123)">Delete</button> / <button onclick="deleteRow(123)">Edit</button>'}
+                        ]
+                    } );
+                    console.log(data1);
+                });
+    } );
 }
-</script>
+a();
+
+</script> -->

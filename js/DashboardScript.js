@@ -1,10 +1,10 @@
 
 
-
-$.post( '/dashboard2' ).done(function (data1) {
+function getDataForJtable(){
+$.post( '/dashboard' ).done(function (data1) {
             $(document).ready(function() {
                 $('#example').DataTable( {
-                    data : data1,
+                    data : data1,                    
                     columns: [
                         {data: 'treatmentNum'},
                         {data: 'treatmentInfo'},
@@ -14,11 +14,13 @@ $.post( '/dashboard2' ).done(function (data1) {
                         {defaultContent: '<button onclick="deleteRow(123)">Delete</button> / <button onclick="deleteRow(123)">Edit</button>'}
                     ]
                 } );
+                console.log(data1);
             });
 } );
+}
 
 
-
+getDataForJtable();
 
 
 function deleteRow(treatmentNum) {

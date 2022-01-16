@@ -23,7 +23,8 @@ function emailValidation(e){
               {
                 const newLocal = 'show';
                 var mymodal = $('#ErrorModal03');
-                mymodal.find('.modal-body').text('Email sent successfuly, please reset your password\n');
+                //mymodal.find('.modal-body').text('Email sent successfuly, please reset your password\n');
+                mymodal.find('.modal-body').add("");
                 mymodal.modal(newLocal);
               }
               // if (data == "Error") {
