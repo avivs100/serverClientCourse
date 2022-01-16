@@ -9,10 +9,16 @@ var jsonParser = bp.json();
 app.use(bp.urlencoded({ extended: true }));
 app.use(jsonParser);
 
+
+
+
+
+
 /** DATA BASE  */
 var connection = require('./DBconfig.js');
 
 const encryption = require("./encryption");
+const res = require('express/lib/response');
 
 
 
@@ -22,6 +28,11 @@ const encryption = require("./encryption");
 
 app.use(express.static(__dirname));
 console.log(__dirname);
+
+
+
+app.listen(port);
+console.log('Server started! At http://localhost:' + port);
 // app.get('/', function (req, res) {
 //     res.sendFile(path.join(__dirname + '../../HomePage/HomePage.html'));
 // })
@@ -113,8 +124,6 @@ app.post('/dashboard_insert', async function (req, res) {
 
 
 
-app.listen(port);
-console.log('Server started! At http://localhost:' + port);
 
 //lib.sendMailToUser(nodemailer,"avivshichman@gmail.com","david","david david");
 
@@ -229,3 +238,10 @@ app.post('/ForgotPassword',jsonParser, async function (req, resul) {
         }
         }); 
     });
+
+
+    app.get('*', function (req, res) {
+        res.sendFile(path.join(__dirname + '/404.html'));
+    })
+
+
