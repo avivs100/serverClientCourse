@@ -4,8 +4,10 @@
 
 <head>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="css/DashboardStyle.css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
   <!-- <script src ="js/dashboardScript.js"></script> -->
   <title > Dashboard </title>
   <meta charset="utf-8">
@@ -33,20 +35,43 @@
 
 <body>
 <header>
-  <div class="container bg-info p-5 ">
+
+  <div class="container bg-info p-5" >
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Redirect</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
+          <!---
           <a class="nav-item nav-link active" href="dashboard2.html">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="dashboard2.html">Contact us <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="dashboard2.html">Log out <span class="sr-only">(current)</span></a>
+          -->
+          <button class="btn btn-dark" id="my_but" onclick="location.replace('/dashboard2');">Home <span class="sr-only">(current)</span></button>
+          <button class="btn btn-dark" onclick="location.replace('/contactuspage');">Contact us <span class="sr-only">(current)</span></button>
+          <button class="btn btn-danger" onclick="location.replace('/');">Log out <span class="sr-only">(current)</span></button>
         </div>
       </div>
     </nav>
   </div>
 </header>
+
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+  <div class="row">
+  <div class="col-md-4">
+  <img src="/photos/toy-car-background-1.jpg" alt="Small car icon" style="width:400px;height:250px;border-radius: 50%;">
+  </div>
+  <div class="col-md-4">
+  <img src="/photos/photo-1588675800871-7dd651199679.jpg" alt="Small car icon" style="width:400px;height:250px;border-radius: 50%;">
+</div>
+<div class="col-md-4">
+  <img src="/photos/photo-1588667189190-f2c68ffff8b3.jpg" alt="Small car icon" style="width:400px;height:250px;border-radius: 50%;">
+  </div>
+</div>
+</div>
+</div>
 
 <main>
 

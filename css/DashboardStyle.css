@@ -67,3 +67,29 @@
   .active {
     display: block;
   }
+  .btn-dark{
+    margin-left:15%;
+    margin-left:15%;
+    text-align: center;  
+
+  }
+  .btn-danger{
+    margin-left:15%;
+    text-align: center;  
+  }
+  body{
+    background-image: url("/photos/elegant-white-background-with-shiny-lines_1017-17580.jpg");
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #my_but{
+    margin-left:100%;
+  }
+  .container bg-info p-5{
+    background-color:black;
+  }
+ .navbar navbar-expand-lg navbar-light bg-light{
+  background-color:black;
+ }
