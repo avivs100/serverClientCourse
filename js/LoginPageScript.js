@@ -4,37 +4,48 @@ var validpsw=false;
 
 function ValidateEmail(inputText)
 {   
+    
+    const newLocal = 'show';
     var answerFromRecaptcha = recaptchaFunc();
 
     if (answerFromRecaptcha == true){
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
     if(inputText.value.match(mailformat) && validpsw)
     {
-        alert("Valid email address and password!");
-        document.form1.text1.focus();
+        var mymodal = $('#welcomModal');
+        mymodal.find('.modal-body').text('Valid email address and password!\n');
+        mymodal.modal(newLocal);
+        //document.form1.text1.focus();
         return true;
     }
     else if(inputText.value.match(mailformat) && validpsw==false)
     {
-        alert("You have entered an invalid password!");
-        document.form1.text1.focus();
+        var mymodal = $('#ErrorModal2');
+        mymodal.find('.modal-body').text('You have entered an invalid password!\n');
+        mymodal.modal(newLocal);
         return false;
     }
     else if(!inputText.value.match(mailformat) && validpsw)
     {
-        alert("You have entered an invalid email address!");
-        document.form1.text1.focus();
+        var mymodal = $('#ErrorModal2');
+        mymodal.find('.modal-body').text('You have entered an invalid email address!\n');
+        mymodal.modal(newLocal);
         return false;
     }
     else 
     {
-        alert("you have entered an invalid email address and invalid password!");
-        document.form1.text1.focus();
+        var mymodal = $('#ErrorModal2');
+        mymodal.find('.modal-body').text('you have entered an invalid email address and invalid password!\n');
+        mymodal.modal(newLocal);
         return false;
     }
 }
     else{
-        alert("recapcha empty!");
+        const newLocal = 'show';
+        var mymodal = $('#ErrorModal');
+        mymodal.find('.modal-body').text('recapcha empty\n');
+        mymodal.modal(newLocal);
     }
 
 }
@@ -130,7 +141,8 @@ function LogInValidation(e,p)
             }
         }
 
-  }
+    }
+
 
   document.addEventListener('DOMContentLoaded', (event) => {
     const recaptcha = document.querySelector('.g-recaptcha');

@@ -21,8 +21,12 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="/path/to/jquery.cookie.js"></script>
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+    <!-- captcha-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
 
   </head>
   <body onload="LogInValidation()"> 
@@ -31,7 +35,7 @@
             <div class="wrapper row d-flex">
                 <div class="col-lg-6 ">
                     <div class="card1 pb-5 ">
-                        <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="photos/Car1.jpg" class="rounded-circle" alt="Cinque Terre" width="500" height="500"> </div>
+                        <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="photos/car1.jpg" class="rounded-circle" alt="Cinque Terre" width="500" height="500"> </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -41,34 +45,37 @@
                                 <div class="line"></div> 
                                 <div class="line"></div>
                             </div>
-                        <form name="mailForm" action="#">
+                            
+                        <form name="mailForm" action="#">         
+                          <div class="container">
+                            <form class="form-signin">
                           <div class="d-flex flex-row align-items-center"> <span class="icons"><i class="fas fa-user"></i></span>
                             <div class="row px-3"> <label class="mb-1">
                                 <h6 class="mb-0 text-sm">Email Address</h6>
-                                </label> <input class="mb-4" type="text" name="mailText" placeholder="Enter a valid email address" id="email"> </div>
+                                </label> <input class="mb-4" type="text" class="input-block-level" name="mailText" placeholder="Enter a valid email address" id="email"> </div>
                           </div>
                           <div class="d-flex flex-row align-items-center"> <span class="icons"><i class="fas fa-lock"></i></span>
                                 <div class="row px-3"> <label class="mb-1">
                                 <h6 class="mb-0 text-sm">Password</h6>
-                                </label> <input type="password" id="psw" name="psw" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" >                         
+                                </label> <input type="password" class="input-block-level" id="psw" name="psw" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" >                         
                                
                               </div>
                           </div>
-                          <input type="checkbox" name="remember" id="remember" />
-                          <label for="remember">Remember me</label>
-                        <div class="row">
+                        
+                              <label class="checkbox">
+                          <input type="checkbox" value="remember-me" id="remember_me" > <label for="rememberMe">Remember me</label>
+                        </label>
+
+                          <div class="row">
+
                             <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input">  </div> <a href="ForgotPassword.html" class="ml-auto mb-0 text sm">Forgot Password?</a>
                         </div>
-                        <div class="Login row justify-content-md-center"> <input id="submit" type="submit" name="submit" value="Log In" method="post" onclick="return ValidateEmail(document.mailForm.mailText)" > </div>
+                        <div class="Login row justify-content-md-center"> <input id="submit"  type="submit" name="submit" value="Log In" method="post" onclick="return ValidateEmail(document.mailForm.mailText)" > </div>
                         <div class="row justify-content-md-center"> <small class="font-weight-bold">Don't have an account? <a href="SignUpPage.html" class="text-danger "> Sign Up</a></small>  </div>
-                        <div class="quform-element quform-element-recaptcha">
-                          <div class="quform-spacer ">
-                              <div class="quform-input">
-                                  <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
-                                  <noscript>Please enable JavaScript to submit this form.</noscript>
-                              </div>
-                          </div>
-                      </div>
+                       <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                       <noscript>Please enable JavaScript to submit this form.</noscript>
+                      </form>
+                    </div>
                         <div id="message">
                           <h6>Password must contain the following:</h6>
                           <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -84,7 +91,7 @@
         </div>
     </div>
   
-    <div class="modal fade" id="ErrorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="white-space: pre-line">
+    <div class="modal" id="ErrorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="white-space: pre-line">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -102,16 +109,60 @@
           </div>
         </div>
       </div>
-  </body>
 
+      
+    <!-- error model for validation of email-->
+    <div class="modal fade" id="ErrorModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="white-space: pre-line">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+    <div class="modal" id="welcomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="white-space: pre-line">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Welcome back</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
   <script>
         $(document).ready(function(){
           var user,pass;
           $("#submit").click(function(){
             user=$("#email").val();
             pass=$("#psw").val();
-            //if(validPswCheck()==true && recaptchaFunc()==true){
-            //  $(location).attr('href','ContactUsPage.html');}
+            if(validPswCheck()==true && recaptchaFunc()==true){
+              //$(location).attr('href','ContactUsPage.html');
+            }
+
             $.post("http://localhost:8080/Login",{email: user,psw: pass}, function(data){
               if(data === "NO SUCH EMAIL") {
                   alert("NO SUCH EMAIL");
